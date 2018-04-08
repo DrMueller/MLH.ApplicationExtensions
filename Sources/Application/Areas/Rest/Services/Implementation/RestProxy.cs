@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Services.Implementation
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class RestProxy : IRestProxy
     {
         private readonly IRestCallStrategy[] _restCallStrategies;

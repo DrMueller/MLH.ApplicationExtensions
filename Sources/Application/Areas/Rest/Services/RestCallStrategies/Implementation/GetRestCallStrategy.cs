@@ -6,6 +6,7 @@ using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Services.Handlers;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Services.RestCallStrategies.Implementation
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class GetRestCallStrategy : RestCallStrategyBase
     {
         public GetRestCallStrategy(IHttpClientFactory httpClientFactory) : base(httpClientFactory)

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Services.RestCallStrategies.Implementation
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class PostRestCallStrategy : RestCallStrategyBase
     {
         public PostRestCallStrategy(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
@@ -19,7 +20,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Services.RestCallStrategies.I
         {
             var jsonBody = JsonConvert.SerializeObject(requestBody);
             var stringContent = new StringContent(jsonBody);
-
             return await httpClient.PostAsync(requestUri, stringContent);
         }
     }
