@@ -9,7 +9,7 @@
     <Product>MyLittleHelpers.ApplicationExtensions</Product>
     <Description>DrMuellers little Application Extensions</Description>
     <PackageIconUrl>https://raw.githubusercontent.com/DrMueller/MLH.ApplicationExtensions/master/Sources/Application/Infrastructure/Assets/M.png</PackageIconUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <AssemblyVersion Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</AssemblyVersion>
     <FileVersion Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</FileVersion>
     <Version Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</Version>
