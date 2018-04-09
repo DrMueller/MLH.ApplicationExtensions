@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models;
@@ -7,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Services.RestCallStrategies.Implementation
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class PostRestCallStrategy : RestCallStrategyBase
     {
         public PostRestCallStrategy(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
