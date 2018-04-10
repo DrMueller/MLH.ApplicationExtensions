@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Handlers;
+using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
 using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
 using StructureMap;
 using StructureMap.Graph;
@@ -33,6 +34,8 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection
                     onConfiguring.Evaluate(configAction => configAction.Invoke(config));
                 });
 
+            var provisioningService = result.GetInstance<IProvisioningService>();
+            ProvisioningServiceSingleton.Initialize(provisioningService);
             return result;
         }
 
