@@ -24,7 +24,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Handlers
                     .GetAssemblies()
                     .SingleOrDefault(a => a.GetName().FullName == assemblyName.FullName);
 
-                if (referencedAssembly == null || references.Contains(referencedAssembly))
+                if (referencedAssembly == null || references.Any(f => f.FullName == referencedAssembly.FullName))
                 {
                     continue;
                 }
