@@ -1,8 +1,6 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Handlers;
 using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
-using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
 using StructureMap;
 using StructureMap.Graph;
 
@@ -11,9 +9,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection
     public static class ContainerInitializationService
     {
         public static Container CreateInitializedContainer(
-            Assembly rootAssembly,
-            Maybe<Action<IAssemblyScanner>> onScanning,
-            Maybe<Action<ConfigurationExpression>> onConfiguring)
+            Assembly rootAssembly)
         {
             var result = new Container();
 
@@ -23,15 +19,10 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection
                     config.Scan(
                         scanner =>
                         {
-                            scanner.AssemblyContainingType(typeof(ContainerInitializationService));
                             AddReferencedAssemblies(scanner, rootAssembly);
                             scanner.LookForRegistries();
                             scanner.WithDefaultConventions();
-
-                            onScanning.Evaluate(scanAction => scanAction.Invoke(scanner));
                         });
-
-                    onConfiguring.Evaluate(configAction => configAction.Invoke(config));
                 });
 
             var provisioningService = result.GetInstance<IProvisioningService>();

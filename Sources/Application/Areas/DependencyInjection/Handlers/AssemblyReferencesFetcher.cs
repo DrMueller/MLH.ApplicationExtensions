@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -29,8 +30,8 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Handlers
                     continue;
                 }
 
-                GetReferences(referencedAssembly, references);
                 references.Add(referencedAssembly);
+                GetReferences(referencedAssembly, references);
             }
         }
     }
