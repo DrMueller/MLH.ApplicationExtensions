@@ -21,7 +21,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection
                         {
                             AddReferencedAssemblies(scanner, rootAssembly);
                             scanner.LookForRegistries();
-                            scanner.WithDefaultConventions();
                         });
                 });
 
