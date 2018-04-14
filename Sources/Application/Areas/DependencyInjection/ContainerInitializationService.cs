@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Handlers;
 using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
 using StructureMap;
@@ -36,6 +37,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection
             var references = AssemblyReferencesFetcher.FetchReferences(rootAssembly);
             foreach (var reference in references)
             {
+                Debug.WriteLine(reference);
                 scanner.Assembly(reference);
             }
         }
