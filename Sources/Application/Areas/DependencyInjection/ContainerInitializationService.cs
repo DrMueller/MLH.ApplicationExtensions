@@ -33,6 +33,8 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection
         private static void AddReferencedAssemblies(IAssemblyScanner scanner, Assembly rootAssembly)
         {
             scanner.Assembly(rootAssembly);
+
+            // Not sure, ehy we need to do this tbh
             scanner.Assembly(typeof(LanguageExtensions.Infrastructure.DependencyInjection.LanguageExtensionsRegistry).Assembly);
             var references = AssemblyReferencesFetcher.FetchReferences(rootAssembly);
             foreach (var reference in references)
