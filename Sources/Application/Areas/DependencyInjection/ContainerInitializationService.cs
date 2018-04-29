@@ -39,7 +39,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection
             var references = AssemblyReferencesFetcher.FetchReferences(rootAssembly);
             foreach (var reference in references)
             {
-                Debug.WriteLine(reference);
                 scanner.Assembly(reference);
             }
         }

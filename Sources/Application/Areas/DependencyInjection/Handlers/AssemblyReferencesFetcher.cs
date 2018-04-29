@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -20,18 +18,20 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Handlers
         {
             foreach (var assemblyName in sourceAssembly.GetReferencedAssemblies())
             {
-                var referencedAssembly = AppDomain
-                    .CurrentDomain
-                    .GetAssemblies()
-                    .SingleOrDefault(a => a.GetName().FullName == assemblyName.FullName);
+                var loadedAssembly = Assembly.Load(assemblyName);
 
-                if (referencedAssembly == null || references.Any(f => f.FullName == referencedAssembly.FullName))
+                ////var referencedAssembly = AppDomain
+                ////    .CurrentDomain
+                ////    .GetAssemblies()
+                ////    .SingleOrDefault(a => a.GetName().FullName == assemblyName.FullName);
+
+                if (loadedAssembly == null || references.Any(f => f.FullName == loadedAssembly.FullName))
                 {
                     continue;
                 }
 
-                references.Add(referencedAssembly);
-                GetReferences(referencedAssembly, references);
+                references.Add(loadedAssembly);
+                GetReferences(loadedAssembly, references);
             }
         }
     }
