@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
 
-namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestCapabilities.Services
+namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingCapabilities.Models
 {
     public class TestingCapabilitiesContainer
     {

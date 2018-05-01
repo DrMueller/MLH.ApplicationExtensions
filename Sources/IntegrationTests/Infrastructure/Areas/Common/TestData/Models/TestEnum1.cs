@@ -1,4 +1,4 @@
-﻿namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Common.TestModels
+﻿namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Common.TestData.Models
 {
     public enum TestEnum1
     {

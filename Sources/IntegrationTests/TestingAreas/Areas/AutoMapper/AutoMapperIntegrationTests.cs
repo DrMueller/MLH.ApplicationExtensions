@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
+using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Common.TestData.Models;
 using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Common.TestData.Services;
-using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Common.TestModels;
-using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestCapabilities.Services;
+using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingCapabilities.Services;
 using NUnit.Framework;
 
 namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingAreas.Areas.AutoMapper
