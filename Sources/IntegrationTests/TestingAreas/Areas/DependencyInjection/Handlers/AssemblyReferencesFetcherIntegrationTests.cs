@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Handlers;
+using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure;
 using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
 using NUnit.Framework;
 
