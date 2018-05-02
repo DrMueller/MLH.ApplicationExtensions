@@ -13,9 +13,14 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingC
         private readonly IContainer _container;
         private Maybe<Action<IMapperConfigurationExpression>> _configExpressionMaybe;
 
+        public static ITestingCapabilitiesBuilder Start()
+        {
+            return new TestingCapabilitiesBuilder();
+        }
+
         public TestingCapabilitiesBuilder()
         {
-            _configExpressionMaybe = Maybe<Action<IMapperConfigurationExpression>>.CreateNone();
+            _configExpressionMaybe = Maybe.CreateNone<Action<IMapperConfigurationExpression>>();
             _container = ContainerInitializationService.CreateInitializedContainer(typeof(TestingCapabilitiesBuilder).Assembly);
         }
 
@@ -29,7 +34,7 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingC
 
         public ITestingCapabilitiesBuilder WithAutoMapper(Action<IMapperConfigurationExpression> config)
         {
-            _configExpressionMaybe = Maybe<Action<IMapperConfigurationExpression>>.CreateSome(config);
+            _configExpressionMaybe = Maybe.CreateSome(config);
             return this;
         }
 
