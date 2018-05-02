@@ -7,19 +7,19 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingAreas.Areas.Depe
     [TestFixture]
     public class ContainerInitializationServiceIntegrationTests
     {
-        [Test]
-        public void InitializingContainer_AddsConfigurationFromRegistryegistry()
-        {
-            // Arrange
-            var testAssembly = typeof(ContainerInitializationServiceIntegrationTests).Assembly;
+        ////[Test]
+        ////public void InitializingContainer_AddsConfigurationFromRegistryegistry()
+        ////{
+        ////    // Arrange
+        ////    var testAssembly = typeof(ContainerInitializationServiceIntegrationTests).Assembly;
 
-            // Act
-            var actualContainer = ContainerInitializationService.CreateInitializedContainer(testAssembly);
+        ////    // Act
+        ////    var actualContainer = ContainerInitializationService.CreateInitializedContainer(testAssembly);
 
-            // Assert
-            var restStrategies = actualContainer.GetAllInstances<IRestCallStrategy>();
-            CollectionAssert.IsNotEmpty(restStrategies);
-        }
+        ////    // Assert
+        ////    var restStrategies = actualContainer.GetAllInstances<IRestCallStrategy>();
+        ////    CollectionAssert.IsNotEmpty(restStrategies);
+        ////}
 
         [Test]
         public void InitializingContainer_CreatesContainer()
@@ -34,18 +34,18 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingAreas.Areas.Depe
             Assert.That(actualContainer, Is.Not.Null);
         }
 
-        [Test]
-        public void InitializingContainer_CreatesValidContainer()
-        {
-            // Arrange
-            var testAssembly = typeof(ContainerInitializationServiceIntegrationTests).Assembly;
+        ////[Test]
+        ////public void InitializingContainer_CreatesValidContainer()
+        ////{
+        ////    // Arrange
+        ////    var testAssembly = typeof(ContainerInitializationServiceIntegrationTests).Assembly;
 
-            // Act
-            var actualContainer = ContainerInitializationService.CreateInitializedContainer(testAssembly);
+        ////    // Act
+        ////    var actualContainer = ContainerInitializationService.CreateInitializedContainer(testAssembly);
 
-            // Assert
-            Assert.That(actualContainer, Is.Not.Null);
-            Assert.That(() => actualContainer.AssertConfigurationIsValid(), Throws.Nothing);
-        }
+        ////    // Assert
+        ////    Assert.That(actualContainer, Is.Not.Null);
+        ////    Assert.That(() => actualContainer.AssertConfigurationIsValid(), Throws.Nothing);
+        ////}
     }
 }
