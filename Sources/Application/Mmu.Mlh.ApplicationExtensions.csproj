@@ -26,7 +26,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.0" />
-    <PackageReference Include="Mmu.Mlh.LanguageExtensions" Version="1.2.9" />
+    <PackageReference Include="Mmu.Mlh.LanguageExtensions" Version="1.2.10" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="NLog" Version="4.5.2" />
     <PackageReference Include="StructureMap" Version="4.6.1" />
