@@ -19,12 +19,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Handlers
             foreach (var assemblyName in sourceAssembly.GetReferencedAssemblies())
             {
                 var loadedAssembly = Assembly.Load(assemblyName);
-
-                ////var referencedAssembly = AppDomain
-                ////    .CurrentDomain
-                ////    .GetAssemblies()
-                ////    .SingleOrDefault(a => a.GetName().FullName == assemblyName.FullName);
-
                 if (loadedAssembly == null || references.Any(f => f.FullName == loadedAssembly.FullName))
                 {
                     continue;
