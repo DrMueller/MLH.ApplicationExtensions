@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Handlers;
-using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure;
+using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models;
+using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services.Servants;
 using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
 using NUnit.Framework;
 
@@ -14,10 +14,11 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingAreas.Areas.Depe
         {
             // Arrange
             var testAssembly = typeof(AssemblyReferencesFetcherIntegrationTests).Assembly;
-            var appExtensionsAssembly = typeof(AssemblyReferencesFetcher).Assembly;
+            var appExtensionsAssembly = typeof(AssemblyFetcher).Assembly;
+            var assemblyParameters = new AssemblyParameters(testAssembly, "Mmu.Mlh");
 
             // Act
-            var actualReferenceAssemblies = AssemblyReferencesFetcher.FetchReferences(testAssembly);
+            var actualReferenceAssemblies = AssemblyFetcher.GetApplicationRelevantAssemblies(assemblyParameters);
 
             // Assert
             var actualAppExtensionsAssembly = actualReferenceAssemblies.FirstOrDefault(f => f == appExtensionsAssembly);
@@ -31,9 +32,10 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingAreas.Areas.Depe
             // Arrange
             var testAssembly = typeof(AssemblyReferencesFetcherIntegrationTests).Assembly;
             var languageExtensionsAssembly = typeof(Maybe<>).Assembly;
+            var assemblyParameters = new AssemblyParameters(testAssembly, "Mmu.Mlh");
 
             // Act
-            var actualReferenceAssemblies = AssemblyReferencesFetcher.FetchReferences(testAssembly);
+            var actualReferenceAssemblies = AssemblyFetcher.GetApplicationRelevantAssemblies(assemblyParameters);
 
             // Assert
             var actualExtensionsAssembly = actualReferenceAssemblies.FirstOrDefault(f => f == languageExtensionsAssembly);

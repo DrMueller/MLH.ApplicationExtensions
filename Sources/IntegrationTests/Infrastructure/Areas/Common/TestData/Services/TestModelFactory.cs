@@ -21,7 +21,7 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Co
         private static object CreateRandomValueForProperty(PropertyInfo property)
         {
             var propertyType = property.PropertyType;
-            
+
             if (propertyType == typeof(DateTime))
             {
                 return RandomValueFactory.CreateDateTime();

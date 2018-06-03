@@ -1,5 +1,6 @@
-﻿using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection;
-using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Services.RestCallStrategies;
+﻿using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models;
+using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services;
+using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
 using NUnit.Framework;
 
 namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingAreas.Areas.DependencyInjection
@@ -7,45 +8,48 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingAreas.Areas.Depe
     [TestFixture]
     public class ContainerInitializationServiceIntegrationTests
     {
-        ////[Test]
-        ////public void InitializingContainer_AddsConfigurationFromRegistryegistry()
-        ////{
-        ////    // Arrange
-        ////    var testAssembly = typeof(ContainerInitializationServiceIntegrationTests).Assembly;
+        [Test]
+        public void InitializingContainer_AddsConfigurationFromRegistry()
+        {
+            // Arrange
+            var testAssembly = typeof(ContainerInitializationServiceIntegrationTests).Assembly;
+            var assemblyParameters = new AssemblyParameters(testAssembly, "Mmu.Mlh");
 
-        ////    // Act
-        ////    var actualContainer = ContainerInitializationService.CreateInitializedContainer(testAssembly);
+            // Act
+            var actualContainer = ContainerInitializationService.CreateInitializedContainer(assemblyParameters);
 
-        ////    // Assert
-        ////    var restStrategies = actualContainer.GetAllInstances<IRestCallStrategy>();
-        ////    CollectionAssert.IsNotEmpty(restStrategies);
-        ////}
+            // Assert
+            var provisioningService = actualContainer.GetInstance<IProvisioningService>();
+            Assert.IsNotNull(provisioningService);
+        }
 
         [Test]
         public void InitializingContainer_CreatesContainer()
         {
             // Arrange
             var testAssembly = typeof(ContainerInitializationServiceIntegrationTests).Assembly;
+            var assemblyParameters = new AssemblyParameters(testAssembly, "Mmu.Mlh");
 
             // Act
-            var actualContainer = ContainerInitializationService.CreateInitializedContainer(testAssembly);
+            var actualContainer = ContainerInitializationService.CreateInitializedContainer(assemblyParameters);
 
             // Assert
             Assert.That(actualContainer, Is.Not.Null);
         }
 
-        ////[Test]
-        ////public void InitializingContainer_CreatesValidContainer()
-        ////{
-        ////    // Arrange
-        ////    var testAssembly = typeof(ContainerInitializationServiceIntegrationTests).Assembly;
+        [Test]
+        public void InitializingContainer_CreatesValidContainer()
+        {
+            // Arrange
+            var testAssembly = typeof(ContainerInitializationServiceIntegrationTests).Assembly;
+            var assemblyParameters = new AssemblyParameters(testAssembly, "Mmu.Mlh");
 
-        ////    // Act
-        ////    var actualContainer = ContainerInitializationService.CreateInitializedContainer(testAssembly);
+            // Act
+            var actualContainer = ContainerInitializationService.CreateInitializedContainer(assemblyParameters);
 
-        ////    // Assert
-        ////    Assert.That(actualContainer, Is.Not.Null);
-        ////    Assert.That(() => actualContainer.AssertConfigurationIsValid(), Throws.Nothing);
-        ////}
+            // Assert
+            Assert.That(actualContainer, Is.Not.Null);
+            Assert.That(() => actualContainer.AssertConfigurationIsValid(), Throws.Nothing);
+        }
     }
 }

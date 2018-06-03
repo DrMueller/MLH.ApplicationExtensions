@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
-using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection;
+using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models;
+using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services;
 using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
 using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingCapabilities.Models;
 using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
@@ -13,15 +14,12 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingC
         private readonly IContainer _container;
         private Maybe<Action<IMapperConfigurationExpression>> _configExpressionMaybe;
 
-        public static ITestingCapabilitiesBuilder Start()
-        {
-            return new TestingCapabilitiesBuilder();
-        }
-
         public TestingCapabilitiesBuilder()
         {
+            var assemblyParameters = new AssemblyParameters(typeof(TestingCapabilitiesBuilder).Assembly, "Mmu");
+
             _configExpressionMaybe = Maybe.CreateNone<Action<IMapperConfigurationExpression>>();
-            _container = ContainerInitializationService.CreateInitializedContainer(typeof(TestingCapabilitiesBuilder).Assembly);
+            _container = ContainerInitializationService.CreateInitializedContainer(assemblyParameters);
         }
 
         public TestingCapabilitiesContainer Build()
@@ -37,6 +35,8 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingC
             _configExpressionMaybe = Maybe.CreateSome(config);
             return this;
         }
+
+        public static ITestingCapabilitiesBuilder Start() => new TestingCapabilitiesBuilder();
 
         private IMapper EvaluateMapper()
         {

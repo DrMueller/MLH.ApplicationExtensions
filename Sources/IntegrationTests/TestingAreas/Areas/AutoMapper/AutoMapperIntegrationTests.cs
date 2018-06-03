@@ -2,7 +2,6 @@
 using System.Linq;
 using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Common.TestData.Models;
 using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Common.TestData.Services;
-using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingCapabilities.Services;
 using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingCapabilities.Services.Implementation;
 using NUnit.Framework;
 

@@ -5,7 +5,7 @@ using StructureMap;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning.Implementation
 {
-    public class ProvisioningService : IProvisioningService
+    internal class ProvisioningService : IProvisioningService
     {
         private readonly IContainer _container;
 
