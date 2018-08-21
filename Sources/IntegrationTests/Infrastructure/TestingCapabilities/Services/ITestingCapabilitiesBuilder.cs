@@ -6,8 +6,8 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingC
 {
     public interface ITestingCapabilitiesBuilder
     {
-        ITestingCapabilitiesBuilder WithAutoMapper(Action<IMapperConfigurationExpression> config);
-
         TestingCapabilitiesContainer Build();
+
+        ITestingCapabilitiesBuilder WithAutoMapper(Action<IMapperConfigurationExpression> config);
     }
 }

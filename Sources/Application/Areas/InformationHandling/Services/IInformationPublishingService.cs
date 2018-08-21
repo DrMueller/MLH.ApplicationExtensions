@@ -4,6 +4,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services
 {
     public interface IInformationPublishingService
     {
-        void Publish(InformationEntry informationEntry);   
+        void Publish(InformationEntry informationEntry);
     }
 }

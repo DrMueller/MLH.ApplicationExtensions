@@ -8,10 +8,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Logging.Services.Implementation
     {
         private readonly ILoggerProxy _logProxy;
 
-        public LoggingService(ILoggerProxy logProxy)
-        {
-            _logProxy = logProxy;
-        }
+        public LoggingService(ILoggerProxy logProxy) => _logProxy = logProxy;
 
         public void LogException(Exception ex)
         {

@@ -1,24 +1,29 @@
 ﻿using System;
 using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
+using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models
 {
     public class RestCall
     {
-        public RestCall(Uri baseUri, string resourcePath, RestCallMethodType methodType, object body = null)
+        public RestCall(Uri baseUri, string resourcePath, RestCallMethodType methodType, SecurityOptions securityOptions, Maybe<object> body)
         {
             Guard.ObjectNotNull(() => baseUri);
             Guard.StringNotNullOrEmpty(() => resourcePath);
+            Guard.ObjectNotNull(() => securityOptions);
+            Guard.ObjectNotNull(() => body);
 
             ResourcePath = resourcePath;
             MethodType = methodType;
-            BaseUri = baseUri;
+            SecurityOptions = securityOptions;
             Body = body;
+            BaseUri = baseUri;
         }
 
         public Uri BaseUri { get; }
-        public object Body { get; }
+        public Maybe<object> Body { get; }
         public RestCallMethodType MethodType { get; }
         public string ResourcePath { get; }
+        public SecurityOptions SecurityOptions { get; }
     }
 }

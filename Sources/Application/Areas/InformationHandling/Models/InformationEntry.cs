@@ -11,8 +11,8 @@
         }
 
         public InformationEntryType EntryType { get; }
-        public int? LengthInSeconds { get; }
         public bool IsBusy { get; }
+        public int? LengthInSeconds { get; }
         public string Message { get; }
 
         public static InformationEntry CreateEmpty() => new InformationEntry(string.Empty, false, InformationEntryType.None, null);

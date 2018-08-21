@@ -12,6 +12,7 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingC
     public class TestingCapabilitiesBuilder : ITestingCapabilitiesBuilder
     {
         private readonly IContainer _container;
+
         private Maybe<Action<IMapperConfigurationExpression>> _configExpressionMaybe;
 
         public TestingCapabilitiesBuilder()
@@ -30,13 +31,13 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingC
             return new TestingCapabilitiesContainer(mapper, provisioningService);
         }
 
+        public static ITestingCapabilitiesBuilder Start() => new TestingCapabilitiesBuilder();
+
         public ITestingCapabilitiesBuilder WithAutoMapper(Action<IMapperConfigurationExpression> config)
         {
             _configExpressionMaybe = Maybe.CreateSome(config);
             return this;
         }
-
-        public static ITestingCapabilitiesBuilder Start() => new TestingCapabilitiesBuilder();
 
         private IMapper EvaluateMapper()
         {

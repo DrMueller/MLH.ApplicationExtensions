@@ -29,6 +29,21 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services.Serva
             return assemblies;
         }
 
+        private static void AppendAssembliesByAssemblyReferences(Assembly assembly, string assemblyPrefix, ICollection<Assembly> assemblies)
+        {
+            foreach (var assemblyName in assembly.GetReferencedAssemblies())
+            {
+                var loadedAssembly = Assembly.Load(assemblyName);
+                if (!IsRelevantForApplication(loadedAssembly, assemblyPrefix))
+                {
+                    continue;
+                }
+
+                assemblies.Add(loadedAssembly);
+                AppendAssembliesByAssemblyReferences(loadedAssembly, assemblyPrefix, assemblies);
+            }
+        }
+
         private static void AppendAssembliesInBaseDirectory(Assembly rootAssembly, string assemblyPrefix, List<Assembly> assemblies)
         {
             var assemblyExtensions = new[]
@@ -47,21 +62,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services.Serva
                 .ToList();
 
             assemblies.AddRange(assemblyFiles);
-        }
-
-        private static void AppendAssembliesByAssemblyReferences(Assembly assembly, string assemblyPrefix, ICollection<Assembly> assemblies)
-        {
-            foreach (var assemblyName in assembly.GetReferencedAssemblies())
-            {
-                var loadedAssembly = Assembly.Load(assemblyName);
-                if (!IsRelevantForApplication(loadedAssembly, assemblyPrefix))
-                {
-                    continue;
-                }
-
-                assemblies.Add(loadedAssembly);
-                AppendAssembliesByAssemblyReferences(loadedAssembly, assemblyPrefix, assemblies);
-            }
         }
 
         private static bool IsRelevantForApplication(Assembly assembly, string assemblyPrefix)

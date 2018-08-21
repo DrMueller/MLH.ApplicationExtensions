@@ -7,19 +7,6 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.DependencyI
     public class AssemblyParametersUnitTests
     {
         [Test]
-        public void CreatingFromAssembly_WithThreePrefixParts_TakesThreePrefixParts()
-        {
-            // Arrange
-            var assembly = typeof(AssemblyParametersUnitTests).Assembly;
-
-            // Act
-            var actualAssemblyParameters = AssemblyParameters.CreateFromAssembly(assembly, 3);
-
-            // Assert
-            Assert.AreEqual(actualAssemblyParameters.AssemblyPrefix, "Mmu.Mlh.ApplicationExtensions");
-        }
-
-        [Test]
         public void CreatingAssemblyParameters_CreatesAssemblyParameters()
         {
             // Arrange
@@ -32,6 +19,19 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.DependencyI
             // Assert
             Assert.AreEqual(actualAssemblyParameters.RootAssembly, assembly);
             Assert.AreEqual(actualAssemblyParameters.AssemblyPrefix, TestPrefix);
+        }
+
+        [Test]
+        public void CreatingFromAssembly_WithThreePrefixParts_TakesThreePrefixParts()
+        {
+            // Arrange
+            var assembly = typeof(AssemblyParametersUnitTests).Assembly;
+
+            // Act
+            var actualAssemblyParameters = AssemblyParameters.CreateFromAssembly(assembly, 3);
+
+            // Assert
+            Assert.AreEqual(actualAssemblyParameters.AssemblyPrefix, "Mmu.Mlh.ApplicationExtensions");
         }
     }
 }
