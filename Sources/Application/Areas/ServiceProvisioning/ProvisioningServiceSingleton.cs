@@ -4,7 +4,7 @@
     {
         public static IProvisioningService Instance { get; private set; }
 
-        internal static void Initialize(IProvisioningService instance)
+        public static void Initialize(IProvisioningService instance)
         {
             Instance = instance;
         }
