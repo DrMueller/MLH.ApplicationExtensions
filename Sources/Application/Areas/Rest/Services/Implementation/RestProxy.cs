@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models;
+using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models.Security;
 using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
 using Newtonsoft.Json;
@@ -51,16 +52,8 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Services.Implementation
 
                     httpRequestMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 });
-            
-            if (!securityOptions.ApplySecurity)
-            {
-                return httpRequestMessage;
-            }
 
-            var basicAuthStr = $"{securityOptions.Credentials.UserName}:{securityOptions.Credentials.Password}";
-            var encodedCredentials = Convert.ToBase64String(Encoding.Default.GetBytes(basicAuthStr));
-            httpRequestMessage.Headers.Authorization = new AuthenticationHeaderValue("Basic", encodedCredentials);
-
+            securityOptions.ApplySecurity(httpRequestMessage);
             return httpRequestMessage;
         }
 

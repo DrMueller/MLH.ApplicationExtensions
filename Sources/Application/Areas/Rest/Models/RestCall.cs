@@ -1,4 +1,5 @@
 ﻿using System;
+using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models.Security;
 using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
 

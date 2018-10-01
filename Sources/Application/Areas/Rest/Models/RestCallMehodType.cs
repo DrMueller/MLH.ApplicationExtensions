@@ -3,9 +3,7 @@
     public enum RestCallMethodType
     {
         None = 0,
-
         Get,
-
         Post
     }
 }
