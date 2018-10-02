@@ -4,7 +4,7 @@ using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models;
 using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services;
 using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
 using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingCapabilities.Models;
-using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
+using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 using StructureMap;
 
 namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingCapabilities.Services.Implementation
@@ -12,7 +12,6 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingC
     public class TestingCapabilitiesBuilder : ITestingCapabilitiesBuilder
     {
         private readonly IContainer _container;
-
         private Maybe<Action<IMapperConfigurationExpression>> _configExpressionMaybe;
 
         public TestingCapabilitiesBuilder()
@@ -31,7 +30,10 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingC
             return new TestingCapabilitiesContainer(mapper, provisioningService);
         }
 
-        public static ITestingCapabilitiesBuilder Start() => new TestingCapabilitiesBuilder();
+        public static ITestingCapabilitiesBuilder Start()
+        {
+            return new TestingCapabilitiesBuilder();
+        }
 
         public ITestingCapabilitiesBuilder WithAutoMapper(Action<IMapperConfigurationExpression> config)
         {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models;
 using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services.Servants;
-using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
+using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 using NUnit.Framework;
 
 namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingAreas.Areas.DependencyInjection.Handlers

@@ -2,12 +2,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models;
 using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models.Security;
 using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
-using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
+using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 using Newtonsoft.Json;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Services.Implementation
@@ -66,7 +65,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Services.Implementation
                 case RestCallMethodType.Post:
                     return HttpMethod.Post;
                 default:
-                    throw new ArgumentException($"Invalid RestCallMethodType{ methodType }.");
+                    throw new ArgumentException($"Invalid RestCallMethodType{methodType}.");
             }
         }
 
