@@ -9,20 +9,22 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models
     {
         public Uri BaseUri { get; }
         public Maybe<object> Body { get; }
+        public RestHeaders Headers { get; }
         public RestCallMethodType MethodType { get; }
-        public string ResourcePath { get; }
-        public SecurityOptions SecurityOptions { get; }
+        public Maybe<string> ResourcePath { get; }
+        public RestSecurity Security { get; }
 
-        public RestCall(Uri baseUri, string resourcePath, RestCallMethodType methodType, SecurityOptions securityOptions, Maybe<object> body)
+        internal RestCall(Uri baseUri, Maybe<string> resourcePath, RestCallMethodType methodType, RestSecurity security, RestHeaders headers, Maybe<object> body)
         {
             Guard.ObjectNotNull(() => baseUri);
-            Guard.StringNotNullOrEmpty(() => resourcePath);
-            Guard.ObjectNotNull(() => securityOptions);
+            Guard.ObjectNotNull(() => security);
+            Guard.ObjectNotNull(() => headers);
             Guard.ObjectNotNull(() => body);
 
             ResourcePath = resourcePath;
             MethodType = methodType;
-            SecurityOptions = securityOptions;
+            Security = security;
+            Headers = headers;
             Body = body;
             BaseUri = baseUri;
         }

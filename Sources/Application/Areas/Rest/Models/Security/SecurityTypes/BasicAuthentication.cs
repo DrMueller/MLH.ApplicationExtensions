@@ -6,12 +6,12 @@ using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models.Security.SecurityTypes
 {
-    public class BasicAuthUserNamePassword : SecurityOptions
+    public class BasicAuthentication : RestSecurity
     {
         private readonly string _password;
         private readonly string _userName;
 
-        public BasicAuthUserNamePassword(string userName, string password)
+        internal BasicAuthentication(string userName, string password)
         {
             Guard.StringNotNullOrEmpty(() => userName);
             Guard.StringNotNullOrEmpty(() => password);

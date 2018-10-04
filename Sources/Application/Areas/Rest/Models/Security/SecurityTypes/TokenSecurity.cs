@@ -3,11 +3,11 @@ using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models.Security.SecurityTypes
 {
-    public class TokenSecurity : SecurityOptions
+    public class TokenSecurity : RestSecurity
     {
         private readonly string _encodedToken;
 
-        public TokenSecurity(string encodedToken)
+        internal TokenSecurity(string encodedToken)
         {
             Guard.ObjectNotNull(() => encodedToken);
 
