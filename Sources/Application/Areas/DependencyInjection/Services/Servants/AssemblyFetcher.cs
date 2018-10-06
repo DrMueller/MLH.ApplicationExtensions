@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -69,7 +70,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services.Serva
             var relevantPrefixes = new[]
             {
                 assemblyPrefix,
-                "Mmu.Mlh" // This ensures the other MLH-NuGet Packages are loaded
+                "Mmu"
             };
 
             return assembly != null && relevantPrefixes.Any(relevantPrefix => assembly.FullName.StartsWith(relevantPrefix, StringComparison.OrdinalIgnoreCase));
