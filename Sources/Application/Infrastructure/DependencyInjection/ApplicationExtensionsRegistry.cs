@@ -1,7 +1,7 @@
 ﻿using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services;
 using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services.Implementation;
 using Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding;
-using Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding.NewFolder;
+using Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding.Implementation;
 using Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestProxies;
 using Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestProxies.Implementation;
 using Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestProxies.Servants;

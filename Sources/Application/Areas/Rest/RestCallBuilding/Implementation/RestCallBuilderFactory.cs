@@ -1,7 +1,7 @@
 ﻿using System;
 using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models;
 
-namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding.NewFolder
+namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding.Implementation
 {
     internal class RestCallBuilderFactory : IRestCallBuilderFactory
     {

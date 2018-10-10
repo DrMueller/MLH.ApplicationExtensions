@@ -4,7 +4,7 @@ using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models;
 using Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models.Security;
 using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 
-namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding.NewFolder
+namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding.Implementation
 {
     internal class RestCallBuilder : IRestCallBuilder
     {

@@ -36,20 +36,5 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingAreas.Areas.Depe
             // Assert
             Assert.That(actualContainer, Is.Not.Null);
         }
-
-        [Test]
-        public void InitializingContainer_CreatesValidContainer()
-        {
-            // Arrange
-            var testAssembly = typeof(ContainerInitializationServiceIntegrationTests).Assembly;
-            var assemblyParameters = new AssemblyParameters(testAssembly, "Mmu.Mlh");
-
-            // Act
-            var actualContainer = ContainerInitializationService.CreateInitializedContainer(assemblyParameters);
-
-            // Assert
-            Assert.That(actualContainer, Is.Not.Null);
-            Assert.That(() => actualContainer.AssertConfigurationIsValid(), Throws.Nothing);
-        }
     }
 }

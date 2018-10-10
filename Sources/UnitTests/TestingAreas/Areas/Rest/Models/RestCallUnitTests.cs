@@ -20,17 +20,19 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Rest.Models
             var security = RestSecurity.CreateAnonymous();
             var headers = new RestHeaders(new List<RestHeader>());
             Maybe<object> body = new object();
-            
-            CtorTestBuilderFactory.ForType<RestCall>()
-                .ForDefaultConstructor()
+
+            ConstructorTestBuilderFactory.Constructing<RestCall>()
+                .UsingDefaultConstructor()
                 .WithArgumentValues(baseUri, resourcePath, MethodType, security, headers, body)
-                .MapsToProperty(f => f.BaseUri).WithValue(baseUri)
-                .MapsToProperty(f => f.Body).WithValue(body)
-                .MapsToProperty(f => f.Headers).WithValue(headers)
-                .MapsToProperty(f => f.MethodType).WithValue(MethodType)
-                .MapsToProperty(f => f.ResourcePath).WithValue(resourcePath)
-                .MapsToProperty(f => f.Security).WithValue(security)
-                .Succeeds();
+                .Maps()
+                .ToProperty(f => f.BaseUri).WithValue(baseUri)
+                .ToProperty(f => f.Body).WithValue(body)
+                .ToProperty(f => f.Headers).WithValue(headers)
+                .ToProperty(f => f.MethodType).WithValue(MethodType)
+                .ToProperty(f => f.ResourcePath).WithValue(resourcePath)
+                .ToProperty(f => f.Security).WithValue(security)
+                .BuildMaps()
+                .Assert();
         }
     }
 }
