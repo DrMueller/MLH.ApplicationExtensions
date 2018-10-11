@@ -4,7 +4,7 @@ using Mmu.Mlh.DomainExtensions.Areas.DomainModeling;
 namespace Mmu.Mlh.ApplicationExtensions.Areas.DtoHandling.Services
 {
     public interface IDtoAdapter<TDto, TAggregateRoot, TId>
-        where TDto : IDto<TId>
+        where TDto : DtoBase<TId>
         where TAggregateRoot : AggregateRoot<TId>
     {
         TAggregateRoot Adapt(TDto dto);

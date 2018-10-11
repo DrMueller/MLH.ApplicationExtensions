@@ -9,7 +9,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DtoHandling.Services.Implementatio
 {
     public abstract class DtoDataServiceBase<TDto, TAg, TId> : IDtoDataService<TDto, TId>
         where TAg : AggregateRoot<TId>
-        where TDto : IDto<TId>
+        where TDto : DtoBase<TId>
     {
         private readonly IDtoAdapter<TDto, TAg, TId> _dtoAdapter;
         private readonly IRepository<TAg, TId> _repository;

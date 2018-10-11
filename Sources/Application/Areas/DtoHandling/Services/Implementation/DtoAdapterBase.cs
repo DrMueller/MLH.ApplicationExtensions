@@ -5,7 +5,7 @@ using Mmu.Mlh.DomainExtensions.Areas.DomainModeling;
 namespace Mmu.Mlh.ApplicationExtensions.Areas.DtoHandling.Services.Implementation
 {
     public abstract class DtoAdapterBase<TDto, TAggregateRoot, TId> : IDtoAdapter<TDto, TAggregateRoot, TId>
-        where TDto : IDto<TId>
+        where TDto : DtoBase<TId>
         where TAggregateRoot : AggregateRoot<TId>
     {
         private readonly IMapper _mapper;

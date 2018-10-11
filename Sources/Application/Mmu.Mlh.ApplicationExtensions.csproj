@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\DtoHandling\" />
     <Folder Include="Infrastructure\Assets\" />
   </ItemGroup>
 
