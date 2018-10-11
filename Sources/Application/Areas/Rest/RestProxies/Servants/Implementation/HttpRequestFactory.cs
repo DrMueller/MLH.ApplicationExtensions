@@ -41,6 +41,8 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestProxies.Servants.Implemen
                     return HttpMethod.Get;
                 case RestCallMethodType.Post:
                     return HttpMethod.Post;
+                case RestCallMethodType.Patch:
+                    return new HttpMethod("PATCH");
                 default:
                     throw new ArgumentException($"Invalid RestCallMethodType{methodType}.");
             }

@@ -4,6 +4,7 @@
     {
         None = 0,
         Get,
-        Post
+        Post,
+        Patch
     }
 }
