@@ -19,7 +19,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Rest.Models
             const RestCallMethodType MethodType = RestCallMethodType.Get;
             var security = RestSecurity.CreateAnonymous();
             var headers = new RestHeaders(new List<RestHeader>());
-            Maybe<object> body = new object();
+            var body = Maybe.CreateSome(new RestCallBody(new object()));
 
             ConstructorTestBuilderFactory.Constructing<RestCall>()
                 .UsingDefaultConstructor()

@@ -29,7 +29,10 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Co
             return values.ElementAt(randomIndex);
         }
 
-        public static long CreateLong() => _random.Next();
+        public static long CreateLong()
+        {
+            return _random.Next();
+        }
 
         public static string CreateString(int stringLength)
         {

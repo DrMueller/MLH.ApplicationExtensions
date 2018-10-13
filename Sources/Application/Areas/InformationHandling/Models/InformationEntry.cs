@@ -2,6 +2,11 @@
 {
     public class InformationEntry
     {
+        public InformationEntryType EntryType { get; }
+        public bool IsBusy { get; }
+        public int? LengthInSeconds { get; }
+        public string Message { get; }
+
         private InformationEntry(string message, bool isBusy, InformationEntryType entryType, int? lengthInSeconds)
         {
             Message = message;
@@ -10,16 +15,19 @@
             LengthInSeconds = lengthInSeconds;
         }
 
-        public InformationEntryType EntryType { get; }
-        public bool IsBusy { get; }
-        public int? LengthInSeconds { get; }
-        public string Message { get; }
+        public static InformationEntry CreateEmpty()
+        {
+            return new InformationEntry(string.Empty, false, InformationEntryType.None, null);
+        }
 
-        public static InformationEntry CreateEmpty() => new InformationEntry(string.Empty, false, InformationEntryType.None, null);
-
-        public static InformationEntry CreateInfo(string infoMessage, bool isBusy, int? lengthInSeconds = null) => new InformationEntry(infoMessage, isBusy, InformationEntryType.Info, lengthInSeconds);
+        public static InformationEntry CreateInfo(string infoMessage, bool isBusy, int? lengthInSeconds = null)
+        {
+            return new InformationEntry(infoMessage, isBusy, InformationEntryType.Info, lengthInSeconds);
+        }
 
         public static InformationEntry CreateSuccess(string successMessage, bool isBusy, int? lengthInSeconds = null)
-            => new InformationEntry(successMessage, isBusy, InformationEntryType.Success, lengthInSeconds);
+        {
+            return new InformationEntry(successMessage, isBusy, InformationEntryType.Success, lengthInSeconds);
+        }
     }
 }

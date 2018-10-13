@@ -11,7 +11,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding.Implementati
         private readonly Uri _basePath;
         private readonly List<RestHeader> _headers = new List<RestHeader>();
         private readonly RestCallMethodType _methodType;
-        private Maybe<object> _body = Maybe.CreateNone<object>();
+        private Maybe<RestCallBody> _body = Maybe.CreateNone<RestCallBody>();
         private Maybe<string> _resourcePath = Maybe.CreateNone<string>();
         private RestSecurity _restSecurity = RestSecurity.CreateAnonymous();
 
@@ -32,7 +32,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding.Implementati
                 _body);
         }
 
-        public IRestCallBuilder WithBody(object body)
+        public IRestCallBuilder WithBody(RestCallBody body)
         {
             _body = body;
             return this;
@@ -43,7 +43,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding.Implementati
             return new RestHeadersBuilder(this, _headers);
         }
 
-        public IRestCallBuilder WithouthResourcePath(string resourcePath)
+        public IRestCallBuilder WithResourcePath(string resourcePath)
         {
             _resourcePath = resourcePath;
             return this;

@@ -5,13 +5,13 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingC
 {
     public class TestingCapabilitiesContainer
     {
+        public IMapper Mapper { get; }
+        public IProvisioningService ProvisioningService { get; }
+
         public TestingCapabilitiesContainer(IMapper mapper, IProvisioningService provisioningService)
         {
             Mapper = mapper;
             ProvisioningService = provisioningService;
         }
-
-        public IMapper Mapper { get; }
-        public IProvisioningService ProvisioningService { get; }
     }
 }

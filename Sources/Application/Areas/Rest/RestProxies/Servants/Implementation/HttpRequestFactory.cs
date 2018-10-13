@@ -22,14 +22,14 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestProxies.Servants.Implemen
             return httpRequestMessage;
         }
 
-        private static void CheckAddBody(HttpRequestMessage httpRequestMessage, Maybe<object> body)
+        private static void CheckAddBody(HttpRequestMessage httpRequestMessage, Maybe<RestCallBody> body)
         {
             body.Evaluate(
                 bodyObj =>
                 {
-                    var jsonBody = JsonConvert.SerializeObject(bodyObj);
+                    var jsonBody = JsonConvert.SerializeObject(bodyObj.Payload);
                     httpRequestMessage.Content = new StringContent(jsonBody);
-                    httpRequestMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    httpRequestMessage.Content.Headers.ContentType = new MediaTypeHeaderValue(bodyObj.MediaType);
                 });
         }
 

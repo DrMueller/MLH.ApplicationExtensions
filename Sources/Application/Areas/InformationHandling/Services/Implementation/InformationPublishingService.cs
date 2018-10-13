@@ -11,12 +11,13 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services.Imple
     internal class InformationPublishingService : IInformationPublishingService
     {
         private readonly IInformationSubscriptionService _configurationService;
-
         private Queue<InformationEntry> _informationEntriesQueue = new Queue<InformationEntry>();
-
         private bool _publishingInProgress;
 
-        public InformationPublishingService(IInformationSubscriptionService configurationService) => _configurationService = configurationService;
+        public InformationPublishingService(IInformationSubscriptionService configurationService)
+        {
+            _configurationService = configurationService;
+        }
 
         public void Publish(InformationEntry informationEntry)
         {

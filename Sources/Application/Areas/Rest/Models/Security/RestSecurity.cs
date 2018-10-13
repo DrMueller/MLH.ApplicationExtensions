@@ -5,8 +5,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models.Security
 {
     public abstract class RestSecurity
     {
-        internal abstract void ApplySecurity(HttpRequestMessage requestMessage);
-
         public static RestSecurity CreateAnonymous()
         {
             return new Anonymouss();
@@ -21,5 +19,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.Models.Security
         {
             return new TokenSecurity(encodedToken);
         }
+
+        internal abstract void ApplySecurity(HttpRequestMessage requestMessage);
     }
 }

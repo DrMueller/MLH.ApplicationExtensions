@@ -10,7 +10,6 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Logging.Ser
     public class LoggingServiceUnitTests
     {
         private Mock<ILoggerProxy> _loggerProxyMock;
-
         private LoggingService _sut;
 
         [Test]

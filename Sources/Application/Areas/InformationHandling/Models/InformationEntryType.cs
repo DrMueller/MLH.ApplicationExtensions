@@ -3,13 +3,9 @@
     public enum InformationEntryType
     {
         None = 0,
-
         Info,
-
         Success,
-
         Warning,
-
         Error
     }
 }

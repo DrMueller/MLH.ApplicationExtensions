@@ -55,7 +55,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestProxies.Implementation
         private static T ParseResultContent<T>(string content)
         {
             var targetType = typeof(T);
-            if(targetType.IsPrimitive || targetType == typeof(string))
+            if (targetType.IsPrimitive || targetType == typeof(string))
             {
                 return (T)Convert.ChangeType(content, typeof(T));
             }

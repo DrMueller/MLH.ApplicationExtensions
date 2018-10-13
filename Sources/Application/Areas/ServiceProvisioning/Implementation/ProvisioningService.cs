@@ -9,7 +9,10 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning.Implementation
     {
         private readonly IContainer _container;
 
-        public ProvisioningService(IContainer container) => _container = container;
+        public ProvisioningService(IContainer container)
+        {
+            _container = container;
+        }
 
         public IReadOnlyCollection<T> GetAllServices<T>()
         {

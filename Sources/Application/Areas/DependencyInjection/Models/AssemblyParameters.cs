@@ -6,6 +6,9 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models
 {
     public class AssemblyParameters
     {
+        public string AssemblyPrefix { get; }
+        public Assembly RootAssembly { get; }
+
         public AssemblyParameters(Assembly rootAssembly, string assemblyPrefix)
         {
             Guard.ObjectNotNull(() => assemblyPrefix);
@@ -14,9 +17,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models
             RootAssembly = rootAssembly;
             AssemblyPrefix = assemblyPrefix;
         }
-
-        public string AssemblyPrefix { get; }
-        public Assembly RootAssembly { get; }
 
         public static AssemblyParameters CreateFromAssembly(Assembly assembly, int namespaceParts = 2)
         {

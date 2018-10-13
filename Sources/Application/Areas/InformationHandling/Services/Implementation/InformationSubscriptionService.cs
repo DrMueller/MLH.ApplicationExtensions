@@ -9,7 +9,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services.Imple
     internal class InformationSubscriptionService : IInformationSubscriptionService
     {
         private readonly List<Action<InformationEntry>> _subscribers = new List<Action<InformationEntry>>();
-
         public IReadOnlyCollection<Action<InformationEntry>> Subscribers => _subscribers;
 
         public void RegisterSubscriber(Action<InformationEntry> subscriber)

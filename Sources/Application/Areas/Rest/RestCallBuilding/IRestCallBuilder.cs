@@ -7,11 +7,11 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Rest.RestCallBuilding
     {
         RestCall Build();
 
+        IRestCallBuilder WithBody(RestCallBody body);
+
         IRestHeadersBuilder WithHeaders();
 
-        IRestCallBuilder WithBody(object body);
-
-        IRestCallBuilder WithouthResourcePath(string resourcePath);
+        IRestCallBuilder WithResourcePath(string resourcePath);
 
         IRestCallBuilder WithSecurity(RestSecurity security);
     }
