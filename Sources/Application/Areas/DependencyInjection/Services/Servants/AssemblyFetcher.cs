@@ -53,15 +53,29 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services.Serva
             };
 
             var codeDirectory = Path.GetDirectoryName(rootAssembly.Location);
-
-            var assemblyFiles = Directory.GetFiles(codeDirectory)
+            var assemblyFileInfos = Directory.GetFiles(codeDirectory)
                 .Select(f => new FileInfo(f))
-                .Where(f => assemblyExtensions.Contains(f.Extension.ToUpperInvariant()))
-                .Select(f => Assembly.LoadFrom(f.FullName))
+                .Where(f => assemblyExtensions.Contains(f.Extension.ToUpperInvariant()));
+
+            var loadedAssemblies = new List<Assembly>();
+
+            foreach (var fi in assemblyFileInfos)
+            {
+                try
+                {
+                    loadedAssemblies.Add(Assembly.LoadFrom(fi.FullName));
+                }
+                catch (Exception)
+                {
+                    // Best effort, do nothing here
+                }
+            }
+
+            var relevantAssemblies = loadedAssemblies
                 .Where(f => IsRelevantForApplication(f, assemblyPrefix))
                 .ToList();
 
-            assemblies.AddRange(assemblyFiles);
+            assemblies.AddRange(relevantAssemblies);
         }
 
         private static bool IsRelevantForApplication(Assembly assembly, string assemblyPrefix)
