@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Common.TestData.Models
+namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.Areas.Common.TestData.Models
 {
     public class TestClass1
     {

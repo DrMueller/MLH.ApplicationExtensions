@@ -3,11 +3,11 @@ using AutoMapper;
 using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models;
 using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services;
 using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
-using Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingCapabilities.Models;
+using Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.TestingCapabilities.Models;
 using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 using StructureMap;
 
-namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.TestingCapabilities.Services.Implementation
+namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.TestingCapabilities.Services.Implementation
 {
     public class TestingCapabilitiesBuilder : ITestingCapabilitiesBuilder
     {

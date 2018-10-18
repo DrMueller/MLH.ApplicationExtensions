@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.Infrastructure.Areas.Common.TestData.Services
+namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.Areas.Common.TestData.Services
 {
     public static class RandomValueFactory
     {

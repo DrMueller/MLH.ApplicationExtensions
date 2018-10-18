@@ -17,7 +17,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DtoHandling.Services.Implementatio
 
         public abstract TAggregateRoot Adapt(TDto dto);
 
-        public TDto Adapt(TAggregateRoot aggregateRoot)
+        public virtual TDto Adapt(TAggregateRoot aggregateRoot)
         {
             return _mapper.Map<TDto>(aggregateRoot);
         }
