@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mmu.Mlh.ApplicationExtensions.Areas.Adapters.Services
+﻿namespace Mmu.Mlh.ApplicationExtensions.Areas.Adapters.Services
 {
     public interface IAdapterResolver
     {

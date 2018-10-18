@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -31,8 +32,11 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services.Serva
 
         private static void AppendAssembliesByAssemblyReferences(Assembly assembly, string assemblyPrefix, ICollection<Assembly> assemblies)
         {
+            var tra = assembly.GetReferencedAssemblies().ToList();
+
             foreach (var assemblyName in assembly.GetReferencedAssemblies())
             {
+                Debug.WriteLine(assemblyName);
                 var loadedAssembly = Assembly.Load(assemblyName);
                 if (!IsRelevantForApplication(loadedAssembly, assemblyPrefix))
                 {
