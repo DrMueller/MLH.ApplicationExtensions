@@ -2,6 +2,8 @@
 {
     public interface IAdapterResolver
     {
-        IAdapter<TDto, TModel> Resolve<TDto, TModel>();
+        IAdapter<TDto, TModel> ResolveByAdapteeTypes<TDto, TModel>();
+
+        TAdapter ResolveByAdapterType<TAdapter>();
     }
 }

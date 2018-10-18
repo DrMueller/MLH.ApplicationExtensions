@@ -11,9 +11,14 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Adapters.Services.Implementation
             _provosioningService = provosioningService;
         }
 
-        public IAdapter<TDto, TModel> Resolve<TDto, TModel>()
+        public IAdapter<TDto, TModel> ResolveByAdapteeTypes<TDto, TModel>()
         {
             return _provosioningService.GetService<IAdapter<TDto, TModel>>();
+        }
+
+        public TAdapter ResolveByAdapterType<TAdapter>()
+        {
+            return _provosioningService.GetService<TAdapter>();
         }
     }
 }
