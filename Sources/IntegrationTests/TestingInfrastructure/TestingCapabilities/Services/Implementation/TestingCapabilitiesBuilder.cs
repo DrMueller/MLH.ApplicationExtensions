@@ -22,17 +22,17 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.T
             _container = ContainerInitializationService.CreateInitializedContainer(assemblyParameters);
         }
 
+        public static ITestingCapabilitiesBuilder Start()
+        {
+            return new TestingCapabilitiesBuilder();
+        }
+
         public TestingCapabilitiesContainer Build()
         {
             var provisioningService = _container.GetInstance<IProvisioningService>();
             var mapper = EvaluateMapper();
 
             return new TestingCapabilitiesContainer(mapper, provisioningService);
-        }
-
-        public static ITestingCapabilitiesBuilder Start()
-        {
-            return new TestingCapabilitiesBuilder();
         }
 
         public ITestingCapabilitiesBuilder WithAutoMapper(Action<IMapperConfigurationExpression> config)
