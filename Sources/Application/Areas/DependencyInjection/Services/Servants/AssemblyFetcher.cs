@@ -32,8 +32,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services.Serva
 
         private static void AppendAssembliesByAssemblyReferences(Assembly assembly, string assemblyPrefix, ICollection<Assembly> assemblies)
         {
-            var tra = assembly.GetReferencedAssemblies().ToList();
-
             foreach (var assemblyName in assembly.GetReferencedAssemblies())
             {
                 Debug.WriteLine(assemblyName);

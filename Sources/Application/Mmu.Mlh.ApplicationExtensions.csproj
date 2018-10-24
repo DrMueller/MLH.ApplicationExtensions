@@ -5,7 +5,7 @@
     <Features>IOperation</Features>
     <CodeAnalysisRuleSet>..\..\CA_ProductionCode.ruleset</CodeAnalysisRuleSet>
     <Authors>DrMueller</Authors>
-    <Company>DrMuellerDrMueller</Company>
+    <Company>DrMueller</Company>
     <Product>MyLittleHelpers.ApplicationExtensions</Product>
     <Description>DrMuellers little Application Extensions</Description>
     <PackageIconUrl>https://raw.githubusercontent.com/DrMueller/MLH.ApplicationExtensions/master/Sources/Application/Infrastructure/Assets/M.png</PackageIconUrl>
