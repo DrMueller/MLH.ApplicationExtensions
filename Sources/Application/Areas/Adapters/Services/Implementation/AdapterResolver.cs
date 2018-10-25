@@ -1,24 +1,24 @@
-﻿using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
+﻿using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Adapters.Services.Implementation
 {
     public class AdapterResolver : IAdapterResolver
     {
-        private readonly IProvisioningService _provosioningService;
+        private readonly IServiceLocator _serviceLocator;
 
-        public AdapterResolver(IProvisioningService provosioningService)
+        public AdapterResolver(IServiceLocator serviceLocator)
         {
-            _provosioningService = provosioningService;
+            _serviceLocator = serviceLocator;
         }
 
         public IAdapter<TDto, TModel> ResolveByAdapteeTypes<TDto, TModel>()
         {
-            return _provosioningService.GetService<IAdapter<TDto, TModel>>();
+            return _serviceLocator.GetService<IAdapter<TDto, TModel>>();
         }
 
         public TAdapter ResolveByAdapterType<TAdapter>()
         {
-            return _provosioningService.GetService<TAdapter>();
+            return _serviceLocator.GetService<TAdapter>();
         }
     }
 }

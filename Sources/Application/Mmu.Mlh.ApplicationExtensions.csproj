@@ -28,6 +28,7 @@
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.2" />
     <PackageReference Include="Mmu.Mlh.DomainExtensions" Version="2.0.5" />
     <PackageReference Include="Mmu.Mlh.LanguageExtensions" Version="2.0.9" />
+    <PackageReference Include="Mmu.Mlh.ServiceProvisioning" Version="2.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="NLog" Version="5.0.0-beta11" />
     <PackageReference Include="StructureMap" Version="4.7.0" />

@@ -1,10 +1,10 @@
 ﻿using System;
 using AutoMapper;
-using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models;
-using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Services;
-using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
 using Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.TestingCapabilities.Models;
 using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
+using Mmu.Mlh.ServiceProvisioning.Areas.Initialization.Models;
+using Mmu.Mlh.ServiceProvisioning.Areas.Initialization.Services;
+using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 using StructureMap;
 
 namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.TestingCapabilities.Services.Implementation
@@ -16,10 +16,10 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.T
 
         public TestingCapabilitiesBuilder()
         {
-            var assemblyParameters = new AssemblyParameters(typeof(TestingCapabilitiesBuilder).Assembly, "Mmu");
+            var containerConfig = new ContainerConfiguration(typeof(TestingCapabilitiesBuilder).Assembly, "Mmu");
 
             _configExpressionMaybe = Maybe.CreateNone<Action<IMapperConfigurationExpression>>();
-            _container = ContainerInitializationService.CreateInitializedContainer(assemblyParameters);
+            _container = ContainerInitializationService.CreateInitializedContainer(containerConfig);
         }
 
         public static ITestingCapabilitiesBuilder Start()
@@ -29,10 +29,10 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.T
 
         public TestingCapabilitiesContainer Build()
         {
-            var provisioningService = _container.GetInstance<IProvisioningService>();
+            var serviceLocator = _container.GetInstance<IServiceLocator>();
             var mapper = EvaluateMapper();
 
-            return new TestingCapabilitiesContainer(mapper, provisioningService);
+            return new TestingCapabilitiesContainer(mapper, serviceLocator);
         }
 
         public ITestingCapabilitiesBuilder WithAutoMapper(Action<IMapperConfigurationExpression> config)
