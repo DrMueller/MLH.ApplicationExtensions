@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Mmu.Mlh.ApplicationExtensions.Areas.Adapters.Services;
+using Mmu.Mlh.Adapters.Areas.Services;
 using Mmu.Mlh.ApplicationExtensions.Areas.DtoHandling.Models;
 using Mmu.Mlh.DomainExtensions.Areas.DomainModeling;
 
