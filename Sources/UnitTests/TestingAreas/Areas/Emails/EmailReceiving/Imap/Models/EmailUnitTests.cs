@@ -12,32 +12,31 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
         public void Constructor_Works()
         {
             var emptyAddressList = new List<string>();
-            var addressList = new List<string> { "test@fake.com" };
+            var toAddressList = new List<string> { "test@fake.com" };
+            var fromAddressList = new List<string> { "tra@gmx.ch" };
 
             const string Subject = "Test123";
             const string EmptySubject = "";
             const string Body = "Body1243";
-            const string EmptyBody = "";
 
             ConstructorTestBuilderFactory.Constructing<Email>()
                .UsingDefaultConstructor()
-               .WithArgumentValues(addressList, Subject, Body)
+               .WithArgumentValues(fromAddressList, toAddressList, Subject, Body)
                .Maps()
                .ToProperty(f => f.Body).WithValue(Body)
                .ToProperty(f => f.Subject).WithValue(Subject)
-               .ToProperty(f => f.FromAddresses).WithValue(addressList)
+               .ToProperty(f => f.FromAddresses).WithValues(fromAddressList)
+               .ToProperty(f => f.ToAddresses).WithValues(toAddressList)
                .BuildMaps()
-               .WithArgumentValues(emptyAddressList, Subject, Body)
+               .WithArgumentValues(fromAddressList, emptyAddressList, Subject, Body)
                .Fails()
-                .WithArgumentValues(null, Subject, Body)
+               .WithArgumentValues(emptyAddressList, toAddressList, Subject, Body)
                .Fails()
-               .WithArgumentValues(addressList, EmptySubject, Body)
+               .WithArgumentValues(fromAddressList, toAddressList, EmptySubject, Body)
                .Fails()
-               .WithArgumentValues(addressList, null, Body)
+               .WithArgumentValues(fromAddressList, toAddressList, null, Body)
                .Fails()
-               .WithArgumentValues(addressList, Subject, EmptyBody)
-               .Succeeds()
-               .WithArgumentValues(addressList, Subject, null)
+               .WithArgumentValues(fromAddressList, toAddressList, Subject, null)
                .Succeeds()
                .Assert();
         }

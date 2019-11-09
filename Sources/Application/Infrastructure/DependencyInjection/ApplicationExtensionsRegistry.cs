@@ -26,6 +26,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Infrastructure.DependencyInjection
             // E-Mails - Imap
             For<IImapEmailReceiver>().Use<ImapEmailReceiver>().Singleton();
             For<IImapClientProxy>().Use<ImapClientProxy>().Singleton();
+            For<IImapClientProxyFactory>().Use<ImapClientProxyFactory>().Singleton();
 
             // E-Mails - Sending
             For<IEmailSender>().Use<EmailSender>().Singleton();

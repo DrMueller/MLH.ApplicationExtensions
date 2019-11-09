@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using MailKit;
 using MimeKit;
 using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Models;
-using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Services.Servants.Implementation;
+using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Services.Servants;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Services.Implementation
 {
     internal class ImapEmailReceiver : IImapEmailReceiver
     {
-        private readonly ImapClientProxyFactory _clientFactory;
+        private readonly IImapClientProxyFactory _clientFactory;
 
-        public ImapEmailReceiver(ImapClientProxyFactory clientFactory)
+        public ImapEmailReceiver(IImapClientProxyFactory clientFactory)
         {
             _clientFactory = clientFactory;
         }
@@ -47,8 +47,10 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Service
                 using (var sr = new StreamReader(stream))
                 {
                     var body = await sr.ReadToEndAsync();
+
                     var fromAddresses = mimeMessage.From.Mailboxes.Select(mb => mb.Address).ToList();
-                    var email = new Email(fromAddresses, mimeMessage.Subject, body);
+                    var toAddresses = mimeMessage.To.Mailboxes.Select(mb => mb.Address).ToList();
+                    var email = new Email(fromAddresses, toAddresses, mimeMessage.Subject, body);
                     return email;
                 }
             }
