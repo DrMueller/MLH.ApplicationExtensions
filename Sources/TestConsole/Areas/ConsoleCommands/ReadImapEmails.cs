@@ -35,6 +35,8 @@ namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Areas.ConsoleCommands
                 sb.AppendLine(email.Subject);
                 sb.Append("From: ");
                 sb.AppendLine(string.Join(", ", email.FromAddresses));
+                sb.Append("To: ");
+                sb.AppendLine(string.Join(", ", email.ToAddresses));
                 sb.Append("Body: ");
                 sb.AppendLine(email.Body);
             });
