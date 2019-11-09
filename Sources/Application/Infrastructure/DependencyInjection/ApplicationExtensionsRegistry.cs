@@ -30,6 +30,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Infrastructure.DependencyInjection
             // E-Mails - Sending
             For<IEmailSender>().Use<EmailSender>().Singleton();
             For<ISmtpClientProxy>().Use<SmtpClientProxy>().Singleton();
+            For<ISmtpClientProxyFactory>().Use<SmtpClientProxyFactory>().Singleton();
 
             // Information handling
             For<IInformationSubscriptionService>().Use<InformationSubscriptionService>().Singleton();
