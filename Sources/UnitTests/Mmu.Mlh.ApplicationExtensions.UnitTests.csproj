@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TestingAreas\Infrastructure\**" />
+    <EmbeddedResource Remove="TestingAreas\Infrastructure\**" />
+    <None Remove="TestingAreas\Infrastructure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="Mmu.Mlh.LanguageExtensions" Version="2.1.18" />
@@ -15,10 +21,6 @@
     <PackageReference Include="NUnit" Version="3.11.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="TestingAreas\Infrastructure\" />
   </ItemGroup>
 
   <ItemGroup>
