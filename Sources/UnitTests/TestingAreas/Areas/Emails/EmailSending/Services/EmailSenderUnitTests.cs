@@ -39,8 +39,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
                 "matthiasm@live.de",
                 new List<string> { "test@gmx.ch" },
                 "Test",
-                new EmailBody("Test", false)
-                );
+                new EmailBody("Test", false));
 
             var proxyMock = new Mock<ISmtpClientProxy>();
             _proxyFactoryMock.Setup(f => f.CreateProxy()).Returns(proxyMock.Object);
@@ -59,8 +58,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
                 "matthiasm@live.de",
                 new List<string> { "test@gmx.ch" },
                 "Test",
-                new EmailBody("Test", false)
-                );
+                new EmailBody("Test", false));
 
             var proxyMock = new Mock<ISmtpClientProxy>();
             _proxyFactoryMock.Setup(f => f.CreateProxy()).Returns(proxyMock.Object);
