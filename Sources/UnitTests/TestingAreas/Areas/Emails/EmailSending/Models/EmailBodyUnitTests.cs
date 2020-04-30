@@ -1,4 +1,4 @@
-﻿using Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Models;
+﻿using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models;
 using Mmu.Mlh.TestingExtensions.Areas.ConstructorTesting.Services;
 using NUnit.Framework;
 
@@ -14,13 +14,13 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
             const bool IsHtmlBody = true;
 
             ConstructorTestBuilderFactory.Constructing<EmailBody>()
-               .UsingDefaultConstructor()
-               .WithArgumentValues(StringContent, IsHtmlBody)
-               .Maps()
-               .ToProperty(f => f.Content).WithValue(StringContent)
-               .ToProperty(f => f.IsHtmlBody).WithValue(IsHtmlBody)
-               .BuildMaps()
-               .Assert();
+                .UsingDefaultConstructor()
+                .WithArgumentValues(StringContent, IsHtmlBody)
+                .Maps()
+                .ToProperty(f => f.Content).WithValue(StringContent)
+                .ToProperty(f => f.IsHtmlBody).WithValue(IsHtmlBody)
+                .BuildMaps()
+                .Assert();
         }
     }
 }

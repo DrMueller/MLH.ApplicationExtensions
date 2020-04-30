@@ -1,6 +1,6 @@
-﻿using Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Models;
+﻿using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models;
 
-namespace Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Services
+namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services
 {
     public interface ISmtpSettingsProvider
     {

@@ -13,7 +13,6 @@ namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Areas.ConsoleCommands
         private readonly IConsoleWriter _consoleWriter;
         private readonly IImapEmailReceiver _imapEmailReceiver;
         public string Description => "Read E-Mails via IMAP";
-
         public ConsoleKey Key => ConsoleKey.F1;
 
         public ReadImapEmails(IImapEmailReceiver imapEmailReceiver, IConsoleWriter consoleWriter)
@@ -29,17 +28,18 @@ namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Areas.ConsoleCommands
             _consoleWriter.WriteLine($"Found {emails.Count} E-Mails");
 
             var sb = new StringBuilder();
-            emails.ForEach(email =>
-            {
-                sb.Append("Subject: ");
-                sb.AppendLine(email.Subject);
-                sb.Append("From: ");
-                sb.AppendLine(string.Join(", ", email.FromAddresses));
-                sb.Append("To: ");
-                sb.AppendLine(string.Join(", ", email.ToAddresses));
-                sb.Append("Body: ");
-                sb.AppendLine(email.Body);
-            });
+            emails.ForEach(
+                email =>
+                {
+                    sb.Append("Subject: ");
+                    sb.AppendLine(email.Subject);
+                    sb.Append("From: ");
+                    sb.AppendLine(string.Join(", ", email.FromAddresses));
+                    sb.Append("To: ");
+                    sb.AppendLine(string.Join(", ", email.ToAddresses));
+                    sb.Append("Body: ");
+                    sb.AppendLine(email.Body);
+                });
 
             _consoleWriter.WriteLine(sb.ToString());
         }

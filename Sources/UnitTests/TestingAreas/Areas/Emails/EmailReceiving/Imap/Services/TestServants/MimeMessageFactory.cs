@@ -10,17 +10,9 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
     {
         internal static MimeMessage CreateTestMimeMessage(out ExpectedEmailValues expectedEmailValues)
         {
-            var fromEmailAddresses = new List<string>
-            {
-                "from1@gmx.ch",
-                "from2@fake.com"
-            };
+            var fromEmailAddresses = new List<string> { "from1@gmx.ch", "from2@fake.com" };
 
-            var toEmailAddresses = new List<string>
-            {
-                  "to1@gmx.ch",
-                  "to2@fake.com"
-            };
+            var toEmailAddresses = new List<string> { "to1@gmx.ch", "to2@fake.com" };
 
             var from = fromEmailAddresses.Select(adr => new MailboxAddress(adr)).ToList();
             var to = toEmailAddresses.Select(adr => new MailboxAddress(adr)).ToList();
@@ -34,8 +26,8 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
                 sw.Flush();
                 ms.Seek(0, SeekOrigin.Begin);
 
-                var body = MimeEntity.Load(ms, default);
-                var mimeMessage = new MimeMessage(from: from, to: to, subject: Subject, body: body);
+                var body = MimeEntity.Load(ms);
+                var mimeMessage = new MimeMessage(from, to, Subject, body);
 
                 expectedEmailValues = new ExpectedEmailValues(fromEmailAddresses, toEmailAddresses, Subject, bodyText);
                 return mimeMessage;

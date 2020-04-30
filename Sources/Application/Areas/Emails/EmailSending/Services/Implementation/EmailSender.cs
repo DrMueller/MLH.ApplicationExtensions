@@ -1,13 +1,12 @@
-﻿using System.Net;
-using System.Net.Mail;
+﻿using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models;
 using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services.Servants;
-using Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Models;
 using Mmu.Mlh.LanguageExtensions.Areas.Collections;
 using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 
-namespace Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Services.Implementation
+namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services.Implementation
 {
     internal class EmailSender : IEmailSender
     {
@@ -22,15 +21,16 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Services.Implementati
         {
             Guard.ObjectNotNull(() => email);
 
-            return Task.Run(() =>
-            {
-                var mailMessage = CreateMailMessage(email);
-
-                using (var smtpClient = _smtpClientProxyFactory.CreateProxy())
+            return Task.Run(
+                () =>
                 {
-                    smtpClient.Send(mailMessage);
-                }
-            });
+                    var mailMessage = CreateMailMessage(email);
+
+                    using (var smtpClient = _smtpClientProxyFactory.CreateProxy())
+                    {
+                        smtpClient.Send(mailMessage);
+                    }
+                });
         }
 
         private static MailMessage CreateMailMessage(Email email)

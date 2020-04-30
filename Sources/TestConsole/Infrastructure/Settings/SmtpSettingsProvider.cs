@@ -1,6 +1,6 @@
 ﻿using System.IO;
-using Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Models;
-using Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Services;
+using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models;
+using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services;
 using Mmu.Mlh.ApplicationExtensions.TestConsole.Infrastructure.Dropbox;
 
 namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Infrastructure.Settings

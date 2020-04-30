@@ -16,23 +16,23 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
             const string Password = "Password324";
 
             ConstructorTestBuilderFactory.Constructing<ImapSettings>()
-               .UsingDefaultConstructor()
-               .WithArgumentValues(Host, Port, UserName, Password)
-               .Maps()
-               .ToProperty(f => f.Host).WithValue(Host)
-               .ToProperty(f => f.Password).WithValue(Password)
-               .ToProperty(f => f.Port).WithValue(Port)
-               .ToProperty(f => f.UserName).WithValue(UserName)
-               .BuildMaps()
-               .WithArgumentValues(string.Empty, Port, UserName, Password)
-               .Fails()
-               .WithArgumentValues(Host, 0, UserName, Password)
-               .Fails()
-               .WithArgumentValues(Host, Port, string.Empty, Password)
-               .Fails()
-               .WithArgumentValues(Host, Port, UserName, string.Empty)
-               .Fails()
-               .Assert();
+                .UsingDefaultConstructor()
+                .WithArgumentValues(Host, Port, UserName, Password)
+                .Maps()
+                .ToProperty(f => f.Host).WithValue(Host)
+                .ToProperty(f => f.Password).WithValue(Password)
+                .ToProperty(f => f.Port).WithValue(Port)
+                .ToProperty(f => f.UserName).WithValue(UserName)
+                .BuildMaps()
+                .WithArgumentValues(string.Empty, Port, UserName, Password)
+                .Fails()
+                .WithArgumentValues(Host, 0, UserName, Password)
+                .Fails()
+                .WithArgumentValues(Host, Port, string.Empty, Password)
+                .Fails()
+                .WithArgumentValues(Host, Port, UserName, string.Empty)
+                .Fails()
+                .Assert();
         }
     }
 }

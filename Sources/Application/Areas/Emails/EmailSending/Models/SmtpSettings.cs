@@ -1,6 +1,6 @@
 ﻿using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 
-namespace Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Models
+namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models
 {
     public class SmtpSettings
     {

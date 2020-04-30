@@ -15,10 +15,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Service
 
         public async Task<IImapClientProxy> CreateAuthenticatedProxyAsync()
         {
-            var client = new ImapClient
-            {
-                ServerCertificateValidationCallback = (s, c, h, e) => true
-            };
+            var client = new ImapClient { ServerCertificateValidationCallback = (s, c, h, e) => true };
 
             client.Connect(_settings.Host, _settings.Port, true);
             await client.AuthenticateAsync(_settings.UserName, _settings.Password);

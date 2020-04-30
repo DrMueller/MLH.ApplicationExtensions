@@ -9,29 +9,22 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Service
     {
         private readonly ImapClient _imapClient;
         private bool _disposed;
+        public IMailFolder Inbox => _imapClient.Inbox;
 
         public ImapClientProxy(ImapClient imapClient)
         {
             _imapClient = imapClient;
         }
 
+        public async Task DisconnectAsync()
+        {
+            await _imapClient.DisconnectAsync(true);
+        }
+
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }
-
-        public IMailFolder Inbox
-        {
-            get
-            {
-                return _imapClient.Inbox;
-            }
-        }
-
-        public async Task DisconnectAsync()
-        {
-            await _imapClient.DisconnectAsync(true);
         }
 
         protected virtual void Dispose(bool disposedByCode)

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Models;
-using Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Services;
+using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models;
+using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services;
 using Mmu.Mlh.ConsoleExtensions.Areas.Commands.Models;
 
 namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Areas.ConsoleCommands

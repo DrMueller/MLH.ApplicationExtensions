@@ -5,9 +5,9 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Models
     public class ImapSettings
     {
         public string Host { get; }
+        public string Password { get; }
         public int Port { get; }
         public string UserName { get; }
-        public string Password { get; }
 
         public ImapSettings(string host, int port, string userName, string password)
         {

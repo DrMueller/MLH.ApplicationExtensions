@@ -1,4 +1,4 @@
-﻿namespace Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Models
+﻿namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models
 {
     public class EmailBody
     {

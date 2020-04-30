@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models;
+using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services.Implementation;
 using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services.Servants;
-using Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Models;
-using Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Services.Implementation;
 using Moq;
 using NUnit.Framework;
 
@@ -14,41 +14,14 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
     [TestFixture]
     public class EmailSenderUnitTests
     {
-        private EmailSender _sut;
         private Mock<ISmtpClientProxyFactory> _proxyFactoryMock;
+        private EmailSender _sut;
 
         [SetUp]
         public void Align()
         {
             _proxyFactoryMock = new Mock<ISmtpClientProxyFactory>();
             _sut = new EmailSender(_proxyFactoryMock.Object);
-        }
-
-        [Test]
-        public void Sending_WithEmailNull_ThrowsArgumentException()
-        {
-            // Act & Assert
-            Assert.ThrowsAsync<ArgumentException>(async () => await _sut.SendEmailAsync(null));
-        }
-
-        [Test]
-        public async Task Sending_SendsEmail_ToSmtpClient()
-        {
-            // Arrange
-            var email = new Email(
-                "matthiasm@live.de",
-                new List<string> { "test@gmx.ch" },
-                "Test",
-                new EmailBody("Test", false));
-
-            var proxyMock = new Mock<ISmtpClientProxy>();
-            _proxyFactoryMock.Setup(f => f.CreateProxy()).Returns(proxyMock.Object);
-
-            // Act
-            await _sut.SendEmailAsync(email);
-
-            // Assert
-            proxyMock.Verify(f => f.Send(It.IsAny<MailMessage>()), Times.Once);
         }
 
         [Test]
@@ -81,6 +54,33 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
 
             var actualToAddresses = actualMailMesssage.To.Select(f => f.Address);
             CollectionAssert.AreEqual(email.ToAddresses, actualToAddresses);
+        }
+
+        [Test]
+        public async Task Sending_SendsEmail_ToSmtpClient()
+        {
+            // Arrange
+            var email = new Email(
+                "matthiasm@live.de",
+                new List<string> { "test@gmx.ch" },
+                "Test",
+                new EmailBody("Test", false));
+
+            var proxyMock = new Mock<ISmtpClientProxy>();
+            _proxyFactoryMock.Setup(f => f.CreateProxy()).Returns(proxyMock.Object);
+
+            // Act
+            await _sut.SendEmailAsync(email);
+
+            // Assert
+            proxyMock.Verify(f => f.Send(It.IsAny<MailMessage>()), Times.Once);
+        }
+
+        [Test]
+        public void Sending_WithEmailNull_ThrowsArgumentException()
+        {
+            // Act & Assert
+            Assert.ThrowsAsync<ArgumentException>(async () => await _sut.SendEmailAsync(null));
         }
     }
 }

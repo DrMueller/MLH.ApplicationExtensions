@@ -1,4 +1,4 @@
-﻿using Mmu.Mlh.ApplicationExtensions.Areas.EmailSending.Services;
+﻿using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services;
 using Mmu.Mlh.ApplicationExtensions.TestConsole.Infrastructure.Settings;
 using Mmu.Mlh.ConsoleExtensions.Areas.Commands.Models;
 using StructureMap;
