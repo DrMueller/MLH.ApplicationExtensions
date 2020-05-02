@@ -32,6 +32,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
             proxyMock.Setup(f => f.Inbox).Returns(mailFolderMock.Object);
 
             // Act
+            // ReSharper disable once UnusedVariable
             var actualEmails = await _sut.ReceiveFromInboxAsync();
 
             // Assert
@@ -75,6 +76,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
             proxyMock.Setup(f => f.Inbox).Returns(mailFolderMock.Object);
 
             // Act
+            // ReSharper disable once UnusedVariable
             var actualEmails = await _sut.ReceiveFromInboxAsync();
 
             // Assert
@@ -92,6 +94,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
             proxyMock.Setup(f => f.Inbox).Returns(mailFolderMock.Object);
 
             // Act
+            // ReSharper disable once UnusedVariable
             var actualEmails = await _sut.ReceiveFromInboxAsync();
 
             // Assert
