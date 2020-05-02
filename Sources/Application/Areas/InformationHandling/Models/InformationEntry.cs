@@ -1,5 +1,8 @@
-﻿namespace Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Models
+﻿using JetBrains.Annotations;
+
+namespace Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Models
 {
+    [PublicAPI]
     public class InformationEntry
     {
         public InformationEntryType EntryType { get; }

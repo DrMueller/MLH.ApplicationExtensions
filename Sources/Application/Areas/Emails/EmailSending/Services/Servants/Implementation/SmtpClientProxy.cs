@@ -3,7 +3,7 @@ using System.Net.Mail;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services.Servants.Implementation
 {
-    internal class SmtpClientProxy : ISmtpClientProxy
+    internal sealed class SmtpClientProxy : ISmtpClientProxy
     {
         private readonly SmtpClient _smtpClient;
         private bool _disposed;
@@ -11,6 +11,11 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services.Serva
         public SmtpClientProxy(SmtpClient smtpClient)
         {
             _smtpClient = smtpClient;
+        }
+
+        ~SmtpClientProxy()
+        {
+            Dispose(false);
         }
 
         public void Dispose()
@@ -24,22 +29,19 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services.Serva
             _smtpClient.Send(mailMessage);
         }
 
-        protected virtual void Dispose(bool disposedByCode)
+        private void Dispose(bool disposedByCode)
         {
-            if (!_disposed)
+            if (_disposed)
             {
-                if (disposedByCode)
-                {
-                    _smtpClient.Dispose();
-                }
-
-                _disposed = true;
+                return;
             }
-        }
 
-        ~SmtpClientProxy()
-        {
-            Dispose(false);
+            if (disposedByCode)
+            {
+                _smtpClient.Dispose();
+            }
+
+            _disposed = true;
         }
     }
 }

@@ -5,16 +5,22 @@ using MailKit.Net.Imap;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Services.Servants.Implementation
 {
-    internal class ImapClientProxy : IImapClientProxy
+    internal sealed class ImapClientProxy : IImapClientProxy
     {
         private readonly ImapClient _imapClient;
         private bool _disposed;
-        public IMailFolder Inbox => _imapClient.Inbox;
 
         public ImapClientProxy(ImapClient imapClient)
         {
             _imapClient = imapClient;
         }
+
+        ~ImapClientProxy()
+        {
+            Dispose(false);
+        }
+
+        public IMailFolder Inbox => _imapClient.Inbox;
 
         public async Task DisconnectAsync()
         {
@@ -27,22 +33,19 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Service
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposedByCode)
+        private void Dispose(bool disposedByCode)
         {
-            if (!_disposed)
+            if (_disposed)
             {
-                if (disposedByCode)
-                {
-                    _imapClient.Dispose();
-                }
-
-                _disposed = true;
+                return;
             }
-        }
 
-        ~ImapClientProxy()
-        {
-            Dispose(false);
+            if (disposedByCode)
+            {
+                _imapClient.Dispose();
+            }
+
+            _disposed = true;
         }
     }
 }
