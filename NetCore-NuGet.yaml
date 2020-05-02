@@ -3,6 +3,7 @@ name: 2.1$(rev:.r) # build numbering format
 variables:
   BuildConfiguration: 'Release'
   FolderToPack: 'Application'
+  SolutionName: 'MLH.ApplicationExtensions.sln'
 
 resources:
   repositories:
