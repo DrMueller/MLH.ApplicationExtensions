@@ -1,4 +1,6 @@
-﻿using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services;
+﻿using System.IO.Abstractions;
+using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Services;
+using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services;
 using Mmu.Mlh.ApplicationExtensions.TestConsole.Infrastructure.Settings;
 using Mmu.Mlh.ConsoleExtensions.Areas.Commands.Models;
 using StructureMap;
@@ -18,7 +20,9 @@ namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Infrastructure.DependencyInj
                     scanner.AddAllTypesOf<IConsoleCommand>();
                 });
 
-            For<ISmtpSettingsProvider>().Use<SmtpSettingsProvider>().Singleton();
+            For<ISmtpSettingsProvider>().Use<EmailSettingsProvider>().Singleton();
+            For<IImapSettingsProvider>().Use<EmailSettingsProvider>().Singleton();
+            For<IFileSystem>().Use<FileSystem>().Singleton();
         }
     }
 }
