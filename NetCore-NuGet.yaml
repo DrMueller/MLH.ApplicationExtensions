@@ -1,9 +1,10 @@
-name: 2.1$(rev:.r) # build numbering format
+name: 2.3$(rev:.r) # build numbering format
 
 variables:
   BuildConfiguration: 'Release'
   FolderToPack: 'Application'
-  SolutionName: 'MLH.ApplicationExtensions.sln'
+  SolutionName: 'MLH.ApplicationExtensions.sln' 
+  ApplicationSubPath: 'MLH.ApplicationExtensions' # The logic doesn't use the full repository name, therefore we cant use the build variable
 
 resources:
   repositories:
@@ -19,10 +20,13 @@ jobs:
   pool:
     name: 'Hosted VS2017'
   steps:
+  - checkout: self
+  - checkout: ALMStuff
   - template: AzureDevOps/BuildTemplates/NetCore/Steps/Initialize_And_Test.yaml@ALMStuff
     parameters:
       BuildConfiguration: $(BuildConfiguration)
       SolutionName: $(SolutionName)
+      ApplicationSubPath: $(ApplicationSubPath)
   - template: AzureDevOps/BuildTemplates/NetCore/Steps/Pack_And_Publish_To_NuGet.yaml@ALMStuff
     parameters:
       FolderToPack: $(FolderToPack)
