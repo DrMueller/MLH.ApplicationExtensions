@@ -1,20 +1,20 @@
 ﻿using System.IO.Abstractions;
+using Lamar;
 using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Services;
 using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services;
 using Mmu.Mlh.ApplicationExtensions.TestConsole.Infrastructure.Settings;
 using Mmu.Mlh.ConsoleExtensions.Areas.Commands.Models;
-using StructureMap;
 
 namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Infrastructure.DependencyInjection
 {
-    public class TestConsoleRegistry : Registry
+    public class TestConsoleRegistryCollection : ServiceRegistry
     {
-        public TestConsoleRegistry()
+        public TestConsoleRegistryCollection()
         {
             Scan(
                 scanner =>
                 {
-                    scanner.AssemblyContainingType(typeof(TestConsoleRegistry));
+                    scanner.AssemblyContainingType(typeof(TestConsoleRegistryCollection));
                     scanner.WithDefaultConventions();
 
                     scanner.AddAllTypesOf<IConsoleCommand>();

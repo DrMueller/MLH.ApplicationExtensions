@@ -1,4 +1,5 @@
 ﻿using System.IO.Abstractions;
+using Lamar;
 using Mmu.Mlh.ApplicationExtensions.Areas.Dropbox.Services;
 using Mmu.Mlh.ApplicationExtensions.Areas.Dropbox.Services.Implementation;
 using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Services;
@@ -11,18 +12,17 @@ using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services.Servants;
 using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services.Servants.Implementation;
 using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services;
 using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services.Implementation;
-using StructureMap;
 
 namespace Mmu.Mlh.ApplicationExtensions.Infrastructure.DependencyInjection
 {
-    public class ApplicationExtensionsRegistry : Registry
+    public class ApplicationExtensionsRegistryCollection : ServiceRegistry
     {
-        public ApplicationExtensionsRegistry()
+        public ApplicationExtensionsRegistryCollection()
         {
             Scan(
                 scanner =>
                 {
-                    scanner.AssemblyContainingType<ApplicationExtensionsRegistry>();
+                    scanner.AssemblyContainingType<ApplicationExtensionsRegistryCollection>();
                     scanner.WithDefaultConventions();
                 });
 

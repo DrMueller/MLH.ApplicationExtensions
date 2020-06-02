@@ -7,7 +7,7 @@ using Mmu.Mlh.LanguageExtensions.Areas.Collections;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services.Implementation
 {
-    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by Lamar")]
     internal class InformationPublishingService : IInformationPublishingService
     {
         private readonly IInformationSubscriptionService _configurationService;

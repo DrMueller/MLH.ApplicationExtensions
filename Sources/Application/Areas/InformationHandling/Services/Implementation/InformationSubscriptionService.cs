@@ -5,7 +5,7 @@ using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Models;
 
 namespace Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services.Implementation
 {
-    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by Lamar")]
     internal class InformationSubscriptionService : IInformationSubscriptionService
     {
         private readonly List<Action<InformationEntry>> _subscribers = new List<Action<InformationEntry>>();
