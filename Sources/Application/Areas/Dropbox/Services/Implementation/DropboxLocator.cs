@@ -16,20 +16,33 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Dropbox.Services.Implementation
         public Maybe<string> LocateDropboxPath()
         {
             const string DropboxInfoPath = @"Dropbox\info.json";
-            var jsonPath = _fileSystem.Path.Combine(Environment.GetEnvironmentVariable("LocalAppData"), DropboxInfoPath);
+            var appDataPath = GetAppDataPath();
 
-            if (!_fileSystem.File.Exists(jsonPath))
+            if (string.IsNullOrEmpty(appDataPath))
             {
-                jsonPath = _fileSystem.Path.Combine(Environment.GetEnvironmentVariable("AppData"), DropboxInfoPath);
+                var dropboxPathViaSystemVariable = GetDropboxPathViaSystemVariable();
+                if (string.IsNullOrEmpty(dropboxPathViaSystemVariable))
+                {
+                    return Maybe.CreateNone<string>();
+                }
+
+                return dropboxPathViaSystemVariable;
             }
 
-            if (!_fileSystem.File.Exists(jsonPath))
-            {
-                return Maybe.CreateNone<string>();
-            }
-
-            var dropboxPath = _fileSystem.File.ReadAllText(jsonPath).Split('\"')[5].Replace(@"\\", @"\");
+            var dropboxInfoFullPath = _fileSystem.Path.Combine(appDataPath, DropboxInfoPath);
+            var dropboxPath = _fileSystem.File.ReadAllText(dropboxInfoFullPath).Split('\"')[5].Replace(@"\\", @"\");
             return dropboxPath;
+        }
+
+        private static string GetAppDataPath()
+        {
+            var localAppDataPath = Environment.GetEnvironmentVariable("LocalAppData");
+            return string.IsNullOrEmpty(localAppDataPath) ? Environment.GetEnvironmentVariable("AppData") : localAppDataPath;
+        }
+
+        private static string GetDropboxPathViaSystemVariable()
+        {
+            return Environment.GetEnvironmentVariable("DropboxPath", EnvironmentVariableTarget.Machine);
         }
     }
 }
