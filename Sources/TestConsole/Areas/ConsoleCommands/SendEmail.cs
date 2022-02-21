@@ -22,7 +22,11 @@ namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Areas.ConsoleCommands
         {
             var email = new Email(
                 "matthiasm@live.de",
-                new List<string> { "matthias.mueller@trivadis.com" },
+                new List<string>
+                {
+                    "matthias.mueller@trivadis.com",
+                    "matthiasm@live.de"
+                },
                 "Test 124",
                 new EmailBody("Hello there!", false));
 
