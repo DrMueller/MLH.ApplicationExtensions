@@ -1,7 +1,8 @@
-﻿
-	<Project>
-  <PropertyGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
+		<Features>IOperation</Features>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
