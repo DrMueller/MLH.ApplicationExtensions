@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29326.143
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mmu.Mlh.ApplicationExtensions", "Sources\Application\Mmu.Mlh.ApplicationExtensions.csproj", "{E909E1B3-2480-42B3-924F-98874F3B238F}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{6B85BEB9-AFAF-4EFE-9A87-1C709753A11C}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		CA_ProductionCode.ruleset = CA_ProductionCode.ruleset
-		CA_UnitTests.ruleset = CA_UnitTests.ruleset
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mmu.Mlh.ApplicationExtensions.IntegrationTests", "Sources\IntegrationTests\Mmu.Mlh.ApplicationExtensions.IntegrationTests.csproj", "{07828AF0-5633-45E4-AD91-E406C05B6F8B}"
