@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Features>IOperation</Features>
     <CodeAnalysisRuleSet>..\..\CA_ProductionCode.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mmu.Mlh.ConsoleExtensions" Version="1.1.2" />
+    <PackageReference Include="Mmu.Mlh.ConsoleExtensions" Version="3.0.2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -28,19 +28,15 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.T
 
         public ITestingCapabilitiesBuilder WithAutoMapper(Action<IMapperConfigurationExpression> config)
         {
-            _configExpressionMaybe = Maybe.CreateSome(config);
+            _configExpressionMaybe = config;
             return this;
         }
 
         private IMapper EvaluateMapper()
         {
-            return _configExpressionMaybe.Evaluate(
-                configExpression =>
-                {
-                    var mapper = new MapperConfiguration(configExpression).CreateMapper();
-                    return mapper;
-                },
-                () => null);
+            return _configExpressionMaybe
+                .Map(f => new MapperConfiguration(f).CreateMapper())
+                .Reduce(() => null);
         }
     }
 }

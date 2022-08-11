@@ -20,7 +20,10 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingAreas.Areas.Auto
                     {
                         config.CreateMap<TestClass1, TestClass2>()
                             .ForMember(d => d.StringProperty1, c => c.MapFrom(f => f.StringProperty1))
-                            .ForAllOtherMembers(f => f.Ignore());
+                            .ForMember(d => d.DateTimeProperty, c => c.Ignore())
+                            .ForMember(d => d.StringProperty2, c => c.Ignore())
+                            .ForMember(d => d.StringProperty3, c => c.Ignore())
+                            .ForMember(d => d.EnumProperty1, c => c.Ignore());
                     })
                 .Build();
 

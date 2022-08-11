@@ -14,8 +14,8 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
 
             var toEmailAddresses = new List<string> { "to1@gmx.ch", "to2@fake.com" };
 
-            var from = fromEmailAddresses.Select(adr => new MailboxAddress(adr)).ToList();
-            var to = toEmailAddresses.Select(adr => new MailboxAddress(adr)).ToList();
+            var from = fromEmailAddresses.Select(adr => new MailboxAddress(adr, adr)).ToList();
+            var to = toEmailAddresses.Select(adr => new MailboxAddress(adr, adr)).ToList();
             var bodyText = CreateBodyText();
 
             const string Subject = "Subject1234";

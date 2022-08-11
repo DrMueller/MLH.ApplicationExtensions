@@ -6,6 +6,7 @@ using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Models;
 using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Services;
 using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models;
 using Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services;
+using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 
 namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Infrastructure.Settings
 {
@@ -41,7 +42,8 @@ namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Infrastructure.Settings
         private(string, string) ReadEmailCredentials()
         {
             var dropboxPath =
-                _dropboxLocator.LocateDropboxPath()
+                _dropboxLocator
+                    .LocateDropboxPath()
                     .Reduce(() => throw new Exception("Could not locate Dropbox path"));
 
             var appPath = _fileSystem.Path.Combine(dropboxPath, @"Apps\ApplicationExtensions\settings.txt");
