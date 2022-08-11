@@ -1,4 +1,4 @@
-name: 2.4$(rev:.r) # build numbering format
+name: 2.5$(rev:.r) # build numbering format
 
 variables:
   BuildConfiguration: 'Release'
@@ -19,7 +19,7 @@ jobs:
 - job: 'BuildAndPublishToNuGet'
   displayName: 'Build and publish to NuGet'
   pool:
-    name: 'Hosted VS2017'
+    vmImage: 'windows-2022'
   steps:
   - checkout: self
   - checkout: ALMStuff
