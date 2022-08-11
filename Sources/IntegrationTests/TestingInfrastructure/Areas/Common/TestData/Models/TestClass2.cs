@@ -1,7 +1,10 @@
-﻿using System;
+﻿#nullable enable
+using System;
+using JetBrains.Annotations;
 
 namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.Areas.Common.TestData.Models
 {
+    [PublicAPI]
     public class TestClass2
     {
         public DateTime DateTimeProperty { get; set; }
