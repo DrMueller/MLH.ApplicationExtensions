@@ -1,7 +1,7 @@
 ﻿
-	<PropertyGroup>
+	<Project>
+  <PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
-		<Features>IOperation</Features>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
