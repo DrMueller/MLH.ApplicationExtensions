@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
@@ -14,8 +13,8 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
     [TestFixture]
     public class EmailSenderUnitTests
     {
-        private Mock<ISmtpClientProxyFactory> _proxyFactoryMock;
-        private EmailSender _sut;
+        private Mock<ISmtpClientProxyFactory> _proxyFactoryMock = null!;
+        private EmailSender _sut = null!;
 
         [SetUp]
         public void Align()
@@ -36,7 +35,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
             var proxyMock = new Mock<ISmtpClientProxy>();
             _proxyFactoryMock.Setup(f => f.CreateProxy()).Returns(proxyMock.Object);
 
-            MailMessage actualMailMesssage = null;
+            MailMessage? actualMailMesssage = null;
 
             proxyMock
                 .Setup(f => f.Send(It.IsAny<MailMessage>()))
@@ -47,7 +46,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
 
             // Assert
             Assert.IsNotNull(actualMailMesssage);
-            Assert.AreEqual(email.FromAddress, actualMailMesssage.From.Address);
+            Assert.AreEqual(email.FromAddress, actualMailMesssage!.From.Address);
             Assert.AreEqual(email.Subject, actualMailMesssage.Subject);
             Assert.AreEqual(email.Body.Content, actualMailMesssage.Body);
             Assert.AreEqual(email.Body.IsHtmlBody, actualMailMesssage.IsBodyHtml);
@@ -74,13 +73,6 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
 
             // Assert
             proxyMock.Verify(f => f.Send(It.IsAny<MailMessage>()), Times.Once);
-        }
-
-        [Test]
-        public void Sending_WithEmailNull_ThrowsArgumentException()
-        {
-            // Act & Assert
-            Assert.ThrowsAsync<ArgumentException>(async () => await _sut.SendEmailAsync(null));
         }
     }
 }

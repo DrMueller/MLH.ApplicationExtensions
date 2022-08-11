@@ -19,6 +19,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
             var bodyText = CreateBodyText();
 
             const string Subject = "Subject1234";
+
             using (var ms = new MemoryStream())
             using (var sw = new StreamWriter(ms))
             {
@@ -30,6 +31,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
                 var mimeMessage = new MimeMessage(from, to, Subject, body);
 
                 expectedEmailValues = new ExpectedEmailValues(fromEmailAddresses, toEmailAddresses, Subject, bodyText);
+
                 return mimeMessage;
             }
         }

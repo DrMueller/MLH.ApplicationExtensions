@@ -4,11 +4,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Models
 {
     public class ImapSettings
     {
-        public string Host { get; }
-        public string Password { get; }
-        public int Port { get; }
-        public string UserName { get; }
-
         public ImapSettings(string host, int port, string userName, string password)
         {
             Guard.StringNotNullOrEmpty(() => host);
@@ -21,5 +16,10 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Models
             UserName = userName;
             Password = password;
         }
+
+        public string Host { get; }
+        public string Password { get; }
+        public int Port { get; }
+        public string UserName { get; }
     }
 }

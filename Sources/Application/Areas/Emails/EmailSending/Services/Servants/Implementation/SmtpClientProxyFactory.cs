@@ -15,7 +15,13 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Services.Serva
 
         public ISmtpClientProxy CreateProxy()
         {
-            var smtpClient = new SmtpClient(_smtpSettings.Host, _smtpSettings.Port) { UseDefaultCredentials = true, Credentials = new NetworkCredential(_smtpSettings.UserName, _smtpSettings.Password), DeliveryMethod = SmtpDeliveryMethod.Network, EnableSsl = true };
+            var smtpClient = new SmtpClient(_smtpSettings.Host, _smtpSettings.Port)
+            {
+                UseDefaultCredentials = true,
+                Credentials = new NetworkCredential(_smtpSettings.UserName, _smtpSettings.Password),
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                EnableSsl = true
+            };
 
             return new SmtpClientProxy(smtpClient);
         }

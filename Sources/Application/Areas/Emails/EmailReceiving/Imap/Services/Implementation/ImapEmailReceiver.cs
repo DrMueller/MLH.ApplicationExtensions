@@ -34,6 +34,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Service
 
                 var emails = await Task.WhenAll(emailTasks.ToArray());
                 await clientProxy.DisconnectAsync();
+
                 return emails.ToList();
             }
         }
@@ -44,6 +45,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Service
             {
                 await mimeMessage.Body.WriteToAsync(FormatOptions.Default, stream);
                 stream.Position = 0;
+
                 using (var sr = new StreamReader(stream))
                 {
                     var body = await sr.ReadToEndAsync();
@@ -51,6 +53,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Service
                     var fromAddresses = mimeMessage.From.Mailboxes.Select(mb => mb.Address).ToList();
                     var toAddresses = mimeMessage.To.Mailboxes.Select(mb => mb.Address).ToList();
                     var email = new Email(fromAddresses, toAddresses, mimeMessage.Subject, body);
+
                     return email;
                 }
             }

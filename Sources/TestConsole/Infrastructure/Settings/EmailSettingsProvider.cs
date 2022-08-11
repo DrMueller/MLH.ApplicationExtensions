@@ -39,7 +39,7 @@ namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Infrastructure.Settings
             return new SmtpSettings("SMTP.office365.com", 587, userName, password);
         }
 
-        private (string, string) ReadEmailCredentials()
+        private(string, string) ReadEmailCredentials()
         {
             var dropboxPath =
                 _dropboxLocator

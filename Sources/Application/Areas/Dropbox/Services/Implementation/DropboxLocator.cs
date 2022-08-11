@@ -38,7 +38,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Dropbox.Services.Implementation
             return dropboxPathViaSystemVariable;
         }
 
-        private static string GetDropboxPathViaSystemVariable()
+        private static string? GetDropboxPathViaSystemVariable()
         {
             return Environment.GetEnvironmentVariable("DropboxPath", EnvironmentVariableTarget.Machine);
         }

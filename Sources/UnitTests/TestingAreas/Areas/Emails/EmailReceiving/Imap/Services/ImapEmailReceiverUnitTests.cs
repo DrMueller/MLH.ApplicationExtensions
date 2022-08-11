@@ -12,8 +12,8 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
     [TestFixture]
     public class ImapEmailReceiverUnitTests
     {
-        private Mock<IImapClientProxyFactory> _proxyFactoryMock;
-        private ImapEmailReceiver _sut;
+        private Mock<IImapClientProxyFactory> _proxyFactoryMock = null!;
+        private ImapEmailReceiver _sut = null!;
 
         [SetUp]
         public void Align()

@@ -4,11 +4,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models
 {
     public class SmtpSettings
     {
-        public string Host { get; }
-        public string Password { get; }
-        public int Port { get; }
-        public string UserName { get; }
-
         public SmtpSettings(string host, int port, string userName, string password)
         {
             Guard.StringNotNullOrEmpty(() => host);
@@ -21,5 +16,10 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailSending.Models
             UserName = userName;
             Password = password;
         }
+
+        public string Host { get; }
+        public string Password { get; }
+        public int Port { get; }
+        public string UserName { get; }
     }
 }

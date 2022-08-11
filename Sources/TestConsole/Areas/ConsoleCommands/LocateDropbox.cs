@@ -11,14 +11,15 @@ namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Areas.ConsoleCommands
     {
         private readonly IConsoleWriter _consoleWriter;
         private readonly IDropboxLocator _dropboxLocator;
-        public string Description => "Locate Dropbox";
-        public ConsoleKey Key => ConsoleKey.F3;
 
         public LocateDropbox(IDropboxLocator dropboxLocator, IConsoleWriter consoleWriter)
         {
             _dropboxLocator = dropboxLocator;
             _consoleWriter = consoleWriter;
         }
+
+        public string Description => "Locate Dropbox";
+        public ConsoleKey Key => ConsoleKey.F3;
 
         public Task ExecuteAsync()
         {

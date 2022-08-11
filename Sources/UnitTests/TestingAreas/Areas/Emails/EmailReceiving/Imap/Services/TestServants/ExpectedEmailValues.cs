@@ -4,11 +4,6 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
 {
     internal class ExpectedEmailValues
     {
-        public string BodyText { get; }
-        public IReadOnlyCollection<string> FromEmailAddresses { get; }
-        public string Subject { get; }
-        public IReadOnlyCollection<string> ToEmailAddresses { get; }
-
         public ExpectedEmailValues(
             IReadOnlyCollection<string> fromEmailAddresses,
             IReadOnlyCollection<string> toEmailAddresses,
@@ -20,5 +15,10 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Emails.Emai
             Subject = subject;
             BodyText = bodyTest;
         }
+
+        public string BodyText { get; }
+        public IReadOnlyCollection<string> FromEmailAddresses { get; }
+        public string Subject { get; }
+        public IReadOnlyCollection<string> ToEmailAddresses { get; }
     }
 }

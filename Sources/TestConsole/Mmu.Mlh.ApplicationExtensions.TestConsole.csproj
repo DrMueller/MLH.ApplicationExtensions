@@ -4,7 +4,10 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Features>IOperation</Features>
-    <CodeAnalysisRuleSet>..\..\CA_ProductionCode.ruleset</CodeAnalysisRuleSet>
+	<ImplicitUsings>disable</ImplicitUsings>
+	<Nullable>enable</Nullable>
+	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+	<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

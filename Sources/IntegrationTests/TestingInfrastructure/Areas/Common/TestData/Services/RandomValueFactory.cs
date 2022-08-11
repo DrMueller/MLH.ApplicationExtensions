@@ -14,6 +14,7 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.A
             var randomDay = _random.Next(1, 28);
 
             var result = new DateTime(randomYear, randomMonth, randomDay);
+
             return result;
         }
 
@@ -26,6 +27,7 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.A
 
             var values = enumType.GetEnumValues().Cast<object>().ToList();
             var randomIndex = _random.Next(0, values.Count - 1);
+
             return values.ElementAt(randomIndex);
         }
 

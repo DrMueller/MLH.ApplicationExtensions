@@ -10,6 +10,7 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.A
         public static List<T> CreateSome<T>(int amount)
         {
             var result = new List<T>();
+
             for (var i = 0; i < amount; i++)
             {
                 result.Add(CreateWithRandomValues<T>());
@@ -43,7 +44,8 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.A
         private static T CreateWithRandomValues<T>()
         {
             var instance = Activator.CreateInstance<T>();
-            var writablePropertyInfos = instance.GetType().GetProperties().Where(f => f.CanWrite);
+            var writablePropertyInfos = instance!.GetType().GetProperties().Where(f => f.CanWrite);
+
             foreach (var writableProperty in writablePropertyInfos)
             {
                 writableProperty.SetValue(instance, CreateRandomValueForProperty(writableProperty));

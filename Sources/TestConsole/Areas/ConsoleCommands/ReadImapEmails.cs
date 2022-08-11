@@ -12,14 +12,15 @@ namespace Mmu.Mlh.ApplicationExtensions.TestConsole.Areas.ConsoleCommands
     {
         private readonly IConsoleWriter _consoleWriter;
         private readonly IImapEmailReceiver _imapEmailReceiver;
-        public string Description => "Read E-Mails via IMAP";
-        public ConsoleKey Key => ConsoleKey.F1;
 
         public ReadImapEmails(IImapEmailReceiver imapEmailReceiver, IConsoleWriter consoleWriter)
         {
             _imapEmailReceiver = imapEmailReceiver;
             _consoleWriter = consoleWriter;
         }
+
+        public string Description => "Read E-Mails via IMAP";
+        public ConsoleKey Key => ConsoleKey.F1;
 
         public async Task ExecuteAsync()
         {

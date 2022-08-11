@@ -5,11 +5,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Models
 {
     public class Email
     {
-        public string Body { get; }
-        public IReadOnlyCollection<string> FromAddresses { get; }
-        public string Subject { get; }
-        public IReadOnlyCollection<string> ToAddresses { get; }
-
         public Email(
             IReadOnlyCollection<string> fromAddresses,
             IReadOnlyCollection<string> toAddresses,
@@ -25,5 +20,10 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Emails.EmailReceiving.Imap.Models
             Subject = subject;
             Body = body;
         }
+
+        public string Body { get; }
+        public IReadOnlyCollection<string> FromAddresses { get; }
+        public string Subject { get; }
+        public IReadOnlyCollection<string> ToAddresses { get; }
     }
 }

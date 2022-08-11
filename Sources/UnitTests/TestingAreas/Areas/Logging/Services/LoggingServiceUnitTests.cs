@@ -9,8 +9,31 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Logging.Ser
     [TestFixture]
     public class LoggingServiceUnitTests
     {
-        private Mock<ILoggerProxy> _loggerProxyMock;
-        private LoggingService _sut;
+        private Mock<ILoggerProxy> _loggerProxyMock = null!;
+        private LoggingService _sut = null!;
+
+        [TestCase("")]
+        [TestCase(null)]
+        public void LoggingInfo_WithNullOrEmptyString_ThrowsArgumentException(string actual)
+        {
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => _sut.LogInfo(actual));
+        }
+
+        [TestCase("")]
+        [TestCase(null)]
+        public void LoggingWarning_WithNullOrEmptyString_ThrowsArgumentException(string actual)
+        {
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => _sut.LogWarning(actual));
+        }
+
+        [SetUp]
+        public void SetUp()
+        {
+            _loggerProxyMock = new Mock<ILoggerProxy>();
+            _sut = new LoggingService(_loggerProxyMock.Object);
+        }
 
         [Test]
         public void LoggingError_CallsProxyOnce()
@@ -31,7 +54,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Logging.Ser
         {
             // Arrange
             var exception = new Exception("TestHelloWorld");
-            string actualMessage = null;
+            string? actualMessage = null;
             _loggerProxyMock.Setup(f => f.LogError(exception, It.IsAny<string>())).Callback<Exception, string>(
                 (_, str) =>
                 {
@@ -50,7 +73,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Logging.Ser
         {
             // Arrange
             var exception = new Exception("Test");
-            Exception actualException = null;
+            Exception? actualException = null;
             _loggerProxyMock.Setup(f => f.LogError(exception, It.IsAny<string>())).Callback<Exception, string>(
                 (ex, _) =>
                 {
@@ -62,13 +85,6 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Logging.Ser
 
             // Assert
             Assert.That(actualException, Is.EqualTo(exception));
-        }
-
-        [Test]
-        public void LoggingError_WithNullException_ThrowsArgumentException()
-        {
-            // Act & Assert
-            Assert.Throws<ArgumentException>(() => _sut.LogException(null));
         }
 
         [Test]
@@ -86,7 +102,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Logging.Ser
         {
             // Arrange
             const string ExpectedMessage = "Test";
-            string actualMessage = null;
+            string? actualMessage = null;
             _loggerProxyMock.Setup(f => f.LogInformation(It.IsAny<string>())).Callback<string>(
                 str =>
                 {
@@ -98,14 +114,6 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Logging.Ser
 
             // Assert
             Assert.That(actualMessage, Is.EqualTo(ExpectedMessage));
-        }
-
-        [TestCase("")]
-        [TestCase(null)]
-        public void LoggingInfo_WithNullOrEmptyString_ThrowsArgumentException(string actual)
-        {
-            // Act & Assert
-            Assert.Throws<ArgumentException>(() => _sut.LogInfo(actual));
         }
 
         [Test]
@@ -123,7 +131,7 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Logging.Ser
         {
             // Arrange
             const string ExpectedMessage = "Warning";
-            string actualMessage = null;
+            string? actualMessage = null;
             _loggerProxyMock.Setup(f => f.LogWarning(It.IsAny<string>())).Callback<string>(
                 str =>
                 {
@@ -135,21 +143,6 @@ namespace Mmu.Mlh.ApplicationExtensions.UnitTests.TestingAreas.Areas.Logging.Ser
 
             // Assert
             Assert.That(actualMessage, Is.EqualTo(ExpectedMessage));
-        }
-
-        [TestCase("")]
-        [TestCase(null)]
-        public void LoggingWarning_WithNullOrEmptyString_ThrowsArgumentException(string actual)
-        {
-            // Act & Assert
-            Assert.Throws<ArgumentException>(() => _sut.LogWarning(actual));
-        }
-
-        [SetUp]
-        public void SetUp()
-        {
-            _loggerProxyMock = new Mock<ILoggerProxy>();
-            _sut = new LoggingService(_loggerProxyMock.Object);
         }
     }
 }

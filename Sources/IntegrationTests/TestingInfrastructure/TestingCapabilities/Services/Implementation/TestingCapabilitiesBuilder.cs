@@ -29,6 +29,7 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.T
         public ITestingCapabilitiesBuilder WithAutoMapper(Action<IMapperConfigurationExpression> config)
         {
             _configExpressionMaybe = config;
+
             return this;
         }
 
@@ -36,7 +37,7 @@ namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.T
         {
             return _configExpressionMaybe
                 .Map(f => new MapperConfiguration(f).CreateMapper())
-                .Reduce(() => null);
+                .Reduce(() => throw new ArgumentException("Mapper not configured"));
         }
     }
 }

@@ -3,8 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Features>IOperation</Features>
-    <CodeAnalysisRuleSet>..\..\CA_UnitTests.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+	<ImplicitUsings>disable</ImplicitUsings>
+	<Nullable>enable</Nullable>
+	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+	<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
+</PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702:1591</NoWarn>

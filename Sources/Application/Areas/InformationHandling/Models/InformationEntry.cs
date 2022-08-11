@@ -5,11 +5,6 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Models
     [PublicAPI]
     public class InformationEntry
     {
-        public InformationEntryType EntryType { get; }
-        public bool IsBusy { get; }
-        public int? LengthInSeconds { get; }
-        public string Message { get; }
-
         private InformationEntry(string message, bool isBusy, InformationEntryType entryType, int? lengthInSeconds)
         {
             Message = message;
@@ -17,6 +12,11 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Models
             EntryType = entryType;
             LengthInSeconds = lengthInSeconds;
         }
+
+        public InformationEntryType EntryType { get; }
+        public bool IsBusy { get; }
+        public int? LengthInSeconds { get; }
+        public string Message { get; }
 
         public static InformationEntry CreateEmpty()
         {
