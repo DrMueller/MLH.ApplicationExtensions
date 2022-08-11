@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Mmu.Mlh.ApplicationExtensions.IntegrationTests.TestingInfrastructure.Areas.Common.TestData.Services
 {
+    [SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "Just testing data")]
     public static class RandomValueFactory
     {
         private static readonly Random _random = new Random();

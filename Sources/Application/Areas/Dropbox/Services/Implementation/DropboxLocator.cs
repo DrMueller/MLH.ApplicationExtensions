@@ -22,7 +22,7 @@ namespace Mmu.Mlh.ApplicationExtensions.Areas.Dropbox.Services.Implementation
 
             if (appDataPathResult.IsSuccess)
             {
-                var dropboxPath = _fileSystem.File.ReadAllText(appDataPathResult.Value).Split('\"')[5].Replace(@"\\", @"\");
+                var dropboxPath = _fileSystem.File.ReadAllText(appDataPathResult.Value).Split('\"')[5].Replace(@"\\", @"\", StringComparison.Ordinal);
 
                 return dropboxPath;
             }
